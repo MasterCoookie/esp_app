@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:esp_app/screens/auth/login.dart';
+import 'package:esp_app/screens/auth/register.dart';
 
 class Authenticate extends StatefulWidget {
   const Authenticate({Key key}) : super(key: key);
@@ -10,10 +12,17 @@ class Authenticate extends StatefulWidget {
 class _AuthenticateState extends State<Authenticate> {
 
   bool showLogin = false;
-  
+  void toggleView() {
+    setState(() {
+      showLogin = !showLogin;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
-    
+    if(showLogin) {
+      return Container(child: Login());
+    }
+    return Container(child: Register());
   }
 }
