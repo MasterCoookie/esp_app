@@ -1,0 +1,19 @@
+import 'package:flutter/material.dart';
+
+class Authenticate extends StatefulWidget {
+  const Authenticate({Key key}) : super(key: key);
+
+  @override
+  State<Authenticate> createState() => _AuthenticateState();
+}
+
+class _AuthenticateState extends State<Authenticate> {
+
+  bool showLogin = false;
+  
+
+  @override
+  Widget build(BuildContext context) {
+    
+  }
+}
