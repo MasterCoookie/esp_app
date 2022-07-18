@@ -6,11 +6,11 @@ import 'package:esp_app/screens/auth/authenticate.dart';
 class Wrapper extends StatelessWidget {
 
   //potentially login from saved data
-  User user = null;
+  User user = new User();
 
   @override
   Widget build(BuildContext context) {
-    if(user == null) {
+    if(!user.loggedIn) {
       return Authenticate();
     }
    return Home();
