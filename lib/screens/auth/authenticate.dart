@@ -3,7 +3,6 @@ import 'package:esp_app/screens/auth/login.dart';
 import 'package:esp_app/screens/auth/register.dart';
 
 class Authenticate extends StatefulWidget {
-  const Authenticate({Key key}) : super(key: key);
 
   @override
   State<Authenticate> createState() => _AuthenticateState();
@@ -21,8 +20,8 @@ class _AuthenticateState extends State<Authenticate> {
   @override
   Widget build(BuildContext context) {
     if(showLogin) {
-      return Container(child: Login());
+      return Container(child: Login(toggleViewFunction: toggleView));
     }
-    return Container(child: Register());
+    return Container(child: Register(toggleViewFunction: toggleView));
   }
 }
