@@ -61,12 +61,22 @@ class _RegisterState extends State<Register> {
               decoration: textInputFieldDecoration.copyWith(hintText: "Repeat Password"),
               cursorColor: Colors.orange,
               obscureText: true,
-              validator: (val) => val == password ? 'Passwords dont match' : null,
+              validator: (val) => val != password ? 'Passwords dont match' : null,
               onChanged: (val) {
                 setState(() => passwordRepeated = val);
               },
-            ),
-            
+            ), SizedBox(height:10),
+            ElevatedButton(
+              child: Text('Register', style: TextStyle(color: Colors.white)),
+              style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Colors.orange[600])),
+              onPressed: () async {
+                if(_formKey.currentState.validate()) {
+                  print('dupa');
+                } else {
+                  print('nie dupa');
+                }
+              }
+            )
           ], )
         )
       ),
