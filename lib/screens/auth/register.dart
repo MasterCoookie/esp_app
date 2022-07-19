@@ -65,7 +65,7 @@ class _RegisterState extends State<Register> {
               onChanged: (val) {
                 setState(() => passwordRepeated = val);
               },
-            ), SizedBox(height:10),
+            ), SizedBox(height:5),
             ElevatedButton(
               child: Text('Register', style: TextStyle(color: Colors.white)),
               style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Colors.orange[600])),
