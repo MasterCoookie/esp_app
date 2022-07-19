@@ -15,6 +15,10 @@ class _RegisterState extends State<Register> {
 
   final _formKey = GlobalKey<FormState>();
 
+  String email;
+  String password;
+  String passwordRepeated;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,9 +44,30 @@ class _RegisterState extends State<Register> {
             TextFormField(
               decoration: textInputFieldDecoration.copyWith(hintText: "Email"),
               cursorColor: Colors.orange,
-              
-            )
-          ],)
+              keyboardType: TextInputType.emailAddress,
+              validator: (val) => val.isEmpty ? 'Enter Email' : null,
+              onChanged: (val) {
+                setState(() => email = val);
+              },
+            ), SizedBox(height:10), TextFormField(
+              decoration: textInputFieldDecoration.copyWith(hintText: "Password"),
+              cursorColor: Colors.orange,
+              obscureText: true,
+              validator: (val) => val.length < 8 || val.length > 24 ? 'Password must be between 8 and 24 characters long' : null,
+              onChanged: (val) {
+                setState(() => password = val);
+              },
+            ), SizedBox(height:10), TextFormField(
+              decoration: textInputFieldDecoration.copyWith(hintText: "Repeat Password"),
+              cursorColor: Colors.orange,
+              obscureText: true,
+              validator: (val) => val == password ? 'Passwords dont match' : null,
+              onChanged: (val) {
+                setState(() => passwordRepeated = val);
+              },
+            ),
+            
+          ], )
         )
       ),
     );
