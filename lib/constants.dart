@@ -1,15 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
-const textInputFieldDecoration = InputDecoration(
-  fillColor: Color.fromARGB(255, 235, 220, 177),
+Map<String, dynamic> colorPalette = {
+  "primary": 0xffef5200,
+  "secondary": 0xfffe6900,
+  "bcg": 0xfffe8714,
+  "bcg_secondary": 0xfffd754d,
+  "strong": 0xfffd5e53,
+  "alt_strong": 0xfffa4536
+};
+
+final InputDecoration textInputFieldDecoration = InputDecoration(
+  fillColor: Color(colorPalette["bcg"]),
   filled: true,
   enabledBorder: OutlineInputBorder(
-    borderSide: BorderSide(color: Colors.yellow, width: 2)
+    borderSide: BorderSide(color: Color(colorPalette["bcg_secondary"]), width: 2)
   ),
   focusedBorder: OutlineInputBorder(
-    borderSide: BorderSide(color: Colors.orange, width: 2)
+    borderSide: BorderSide(color: Color(colorPalette["alt_strong"]), width: 2)
   ),
+  hintStyle: TextStyle(color: Color.fromARGB(221, 255, 255, 255))
 );
 
 Future<bool> toastTemplate(String msg) async {

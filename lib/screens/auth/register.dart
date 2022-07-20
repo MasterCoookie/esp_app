@@ -23,9 +23,9 @@ class _RegisterState extends State<Register> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.amber[300],
+      backgroundColor: Color(colorPalette["secondary"]),
       appBar: AppBar(
-        backgroundColor: Colors.orange[600],
+        backgroundColor: Color(colorPalette["primary"]),
         title: Text("Register"),
         //elevation: 0,
         actions: <Widget>[
@@ -69,7 +69,7 @@ class _RegisterState extends State<Register> {
             ), SizedBox(height:5),
             ElevatedButton(
               child: Text('Register', style: TextStyle(color: Colors.white)),
-              style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Colors.orange[600])),
+              style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Color(colorPalette["alt_strong"]))),
               onPressed: () async {
                 if(_formKey.currentState.validate()) {
                   final User user = new User();
