@@ -25,7 +25,7 @@ class User {
       'password': password
     };
 
-    final url = "http://localhost:8080/user_create";
+    final url = "http://10.0.2.2:8080/user_create";
 
     final uri = Uri.parse(url);
     String jsonData = json.encode(data);
@@ -42,10 +42,15 @@ class User {
       int statusCode = response.statusCode;
       String responseBody = response.body;
 
-      print(statusCode);
-      print(responseBody);
+      // print(statusCode);
+      // print(responseBody);
+      if(statusCode == 201) {
+        return true;
+      }
+      return false;
     } catch (e) {
       print(e.message);
+      return false;
     }
 
     
