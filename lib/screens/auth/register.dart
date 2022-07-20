@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:esp_app/constants.dart';
 import 'package:esp_app/services/user.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 
 class Register extends StatefulWidget {
 
@@ -75,7 +74,8 @@ class _RegisterState extends State<Register> {
                 if(_formKey.currentState.validate()) {
                   final User user = new User();
                   if(await user.register(email, password)) {
-                    return await toastTemplate('Registered sucessfully');
+                    await toastTemplate('Registered sucessfully');
+                    widget.toggleViewFunction();
                   } else {
                     return await toastTemplate('Register error');
                   }
