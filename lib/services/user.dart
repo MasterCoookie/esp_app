@@ -1,11 +1,10 @@
-import 'package:flutter/material.dart';
+import 'package:esp_app/services/api_element.dart';
 import 'package:http/http.dart';
 import 'dart:convert';
 
-class User {
+class User extends ApiElement {
   String email;
   String password;
-  String _id;
   bool loggedIn;
 
   User() {
@@ -18,25 +17,23 @@ class User {
   }
 
   Future<bool> register(String email, String password) async {
-    final headers = { 'Content-Type': 'application/json;charset=UTF-8' };
 
     Map<String, dynamic> data = {
       'email': email,
       'password': password
     };
 
-    final url = "http://10.0.2.2:8080/user_create";
+    final url = ApiElement.api_address + "user_create";
 
     final uri = Uri.parse(url);
     String jsonData = json.encode(data);
-    final encoding = Encoding.getByName('utf-8');
 
     try {
       Response response = await post(
         uri,
-        headers: headers,
+        headers: ApiElement.headers,
         body: jsonData,
-        encoding: encoding
+        encoding: ApiElement.encoding
       );
 
       int statusCode = response.statusCode;
