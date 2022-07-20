@@ -4,6 +4,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 Map<String, dynamic> colorPalette = {
   "primary": 0xffef5200,
   "secondary": 0xfffe6900,
+  //this color is literally called "beer"
   "bcg": 0xfffe8714,
   "bcg_secondary": 0xfffd754d,
   "strong": 0xfffd5e53,
