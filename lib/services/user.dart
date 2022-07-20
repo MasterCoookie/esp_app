@@ -40,7 +40,7 @@ class User {
       );
 
       int statusCode = response.statusCode;
-      String responseBody = response.body;
+      //String responseBody = response.body;
 
       // print(statusCode);
       // print(responseBody);

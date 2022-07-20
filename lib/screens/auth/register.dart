@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:esp_app/constants.dart';
 import 'package:esp_app/services/user.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class Register extends StatefulWidget {
 
@@ -73,7 +74,18 @@ class _RegisterState extends State<Register> {
               onPressed: () async {
                 if(_formKey.currentState.validate()) {
                   final User user = new User();
-                  user.register(email, password);
+                  if(await user.register(email, password)) {
+                    //return await toastTemplate('Registered sucessfully');
+                    return Fluttertoast.showToast(
+                      msg: 'Registered sucessfully',
+                      toastLength: Toast.LENGTH_SHORT,
+                      backgroundColor: Colors.orange[200],
+                      textColor: Colors.white,
+                      fontSize: 16
+                    );
+                  } else {
+
+                  }
                   //print('dupa');
                 } else {
                   //print('nie dupa');
