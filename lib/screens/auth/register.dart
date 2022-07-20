@@ -75,16 +75,9 @@ class _RegisterState extends State<Register> {
                 if(_formKey.currentState.validate()) {
                   final User user = new User();
                   if(await user.register(email, password)) {
-                    //return await toastTemplate('Registered sucessfully');
-                    return Fluttertoast.showToast(
-                      msg: 'Registered sucessfully',
-                      toastLength: Toast.LENGTH_SHORT,
-                      backgroundColor: Colors.orange[200],
-                      textColor: Colors.white,
-                      fontSize: 16
-                    );
+                    return await toastTemplate('Registered sucessfully');
                   } else {
-
+                    return await toastTemplate('Register error');
                   }
                   //print('dupa');
                 } else {

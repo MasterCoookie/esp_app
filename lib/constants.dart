@@ -16,8 +16,8 @@ Future<bool> toastTemplate(String msg) async {
   return Fluttertoast.showToast(
     msg: msg,
     toastLength: Toast.LENGTH_SHORT,
-    backgroundColor: Colors.orange[200],
+    backgroundColor: Colors.orange[600],
     textColor: Colors.white,
-    fontSize: 16
+    fontSize: 18
   );
 }
