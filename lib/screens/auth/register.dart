@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:esp_app/constants.dart';
+import 'package:esp_app/services/user.dart';
 
 class Register extends StatefulWidget {
 
@@ -71,9 +72,11 @@ class _RegisterState extends State<Register> {
               style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Colors.orange[600])),
               onPressed: () async {
                 if(_formKey.currentState.validate()) {
-                  print('dupa');
+                  final User user = new User();
+                  user.register(email, password);
+                  //print('dupa');
                 } else {
-                  print('nie dupa');
+                  //print('nie dupa');
                 }
               }
             )
