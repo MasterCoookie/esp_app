@@ -11,7 +11,7 @@ class Wrapper extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if(!user.loggedIn) {
-      return Authenticate();
+      return Authenticate(user: user);
     }
    return Home();
   }

@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:esp_app/screens/auth/login.dart';
 import 'package:esp_app/screens/auth/register.dart';
+import 'package:esp_app/services/user.dart';
 
 class Authenticate extends StatefulWidget {
+  final User user;
+  Authenticate({ this.user });
 
   @override
   State<Authenticate> createState() => _AuthenticateState();
@@ -20,7 +23,7 @@ class _AuthenticateState extends State<Authenticate> {
   @override
   Widget build(BuildContext context) {
     if(showLogin) {
-      return Container(child: Login(toggleViewFunction: toggleView));
+      return Container(child: Login(toggleViewFunction: toggleView, user: widget.user));
     }
     return Container(child: Register(toggleViewFunction: toggleView));
   }
