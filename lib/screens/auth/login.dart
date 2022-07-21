@@ -64,7 +64,6 @@ class _LoginState extends State<Login> {
               style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Color(colorPalette["alt_strong"]))),
               onPressed: () async {
                 if(_formKey.currentState.validate()) {
-                  // final User user = new User();
                   // if(await user.register(email, password)) {
                   //   await toastTemplate('Registered sucessfully');
                   //   widget.toggleViewFunction();
