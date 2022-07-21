@@ -16,7 +16,7 @@ class User extends ApiElement {
     this.loggedIn = true;
   }
 
-  Future<bool> register(String email, String password) async {
+  Future<bool> apiRegister(String email, String password) async {
 
     Map<String, dynamic> data = {
       'email': email,
@@ -49,7 +49,9 @@ class User extends ApiElement {
       print(e.message);
       return false;
     }
+  }
 
-    
+  Future<bool> apiLogin(String email, String password) async {
+
   }
 }

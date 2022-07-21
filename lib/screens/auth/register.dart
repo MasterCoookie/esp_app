@@ -73,7 +73,7 @@ class _RegisterState extends State<Register> {
               onPressed: () async {
                 if(_formKey.currentState.validate()) {
                   final User user = new User();
-                  if(await user.register(email, password)) {
+                  if(await user.apiRegister(email, password)) {
                     await toastTemplate('Registered sucessfully');
                     widget.toggleViewFunction();
                   } else {
