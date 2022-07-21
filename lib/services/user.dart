@@ -52,6 +52,32 @@ class User extends ApiElement {
   }
 
   Future<bool> apiLogin(String email, String password) async {
+    Map<String, dynamic> data = {
+      'email': email,
+      'password': password
+    };
+    
+    final url = ApiElement.api_address + "user_check";
+    final uri = Uri.parse(url);
+    String jsonData = json.encode(data);
 
+    try {
+      Response response = await post(
+        uri,
+        headers: ApiElement.headers,
+        body: jsonData,
+        encoding: ApiElement.encoding
+      );
+
+      int statusCode = response.statusCode;
+
+      if(statusCode == 200) {
+        return true;
+      }
+      return false;
+    } catch (e) {
+      print(e.message);
+      return false;
+    }
   }
 }
