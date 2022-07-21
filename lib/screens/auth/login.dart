@@ -64,15 +64,14 @@ class _LoginState extends State<Login> {
               style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Color(colorPalette["alt_strong"]))),
               onPressed: () async {
                 if(_formKey.currentState.validate()) {
-                  // if(await user.register(email, password)) {
-                  //   await toastTemplate('Registered sucessfully');
-                  //   widget.toggleViewFunction();
-                  // } else {
-                  //   return await toastTemplate('Register error');
-                  // }
-                  //print('dupa');
+                  if(await widget.user.apiLogin(email, password)) {
+                     await toastTemplate('Logged in sucessfully');
+                  } else {
+                    return await toastTemplate('Login error');
+                  }
+
                 } else {
-                  //print('nie dupa');
+                  print('nie dupa');
                 }
               }
             )
