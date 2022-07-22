@@ -11,11 +11,6 @@ class User extends ApiElement {
     this.loggedIn = false;
   }
 
-  void login(String username, String password) {
-    //TODO
-    this.loggedIn = true;
-  }
-
   Future<bool> apiRegister(String email, String password) async {
 
     Map<String, dynamic> data = {
@@ -37,10 +32,7 @@ class User extends ApiElement {
       );
 
       int statusCode = response.statusCode;
-      //String responseBody = response.body;
 
-      // print(statusCode);
-      // print(responseBody);
       if(statusCode == 201) {
         return true;
       }
