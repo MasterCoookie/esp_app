@@ -5,7 +5,8 @@ import 'package:esp_app/services/user.dart';
 
 class Authenticate extends StatefulWidget {
   final User user;
-  Authenticate({ this.user });
+  Function loginUserFunction;
+  Authenticate({ this.user, this.loginUserFunction });
 
   @override
   State<Authenticate> createState() => _AuthenticateState();
@@ -23,7 +24,7 @@ class _AuthenticateState extends State<Authenticate> {
   @override
   Widget build(BuildContext context) {
     if(showLogin) {
-      return Container(child: Login(toggleViewFunction: toggleView, user: widget.user));
+      return Container(child: Login(toggleViewFunction: toggleView, user: widget.user, loginUserFunction : widget.loginUserFunction));
     }
     return Container(child: Register(toggleViewFunction: toggleView));
   }

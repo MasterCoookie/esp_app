@@ -74,7 +74,6 @@ class User extends ApiElement {
       if(statusCode == 200) {
         this.email = email;
         this.password = password;
-        this.loggedIn = true;
         return true;
       }
       return false;

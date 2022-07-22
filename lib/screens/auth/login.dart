@@ -5,9 +5,10 @@ import 'package:esp_app/constants.dart';
 class Login extends StatefulWidget {
   
   final Function toggleViewFunction;
+  final Function loginUserFunction;
   final User user;
 
-  Login({ this.toggleViewFunction, this.user });
+  Login({ this.toggleViewFunction, this.user, this.loginUserFunction });
 
   @override
   State<Login> createState() => _LoginState();
@@ -65,9 +66,13 @@ class _LoginState extends State<Login> {
               onPressed: () async {
                 if(_formKey.currentState.validate()) {
                   if(await widget.user.apiLogin(email, password)) {
-                     await toastTemplate('Logged in sucessfully');
-                  } else {
-                    return await toastTemplate('Login error');
+                      print("logged in");
+                      widget.loginUserFunction();
+                      await toastTemplate('Logged in sucessfully');
+                  } 
+                  else {
+                      print("login err");
+                      return await toastTemplate('Login error');
                   }
 
                 } else {
