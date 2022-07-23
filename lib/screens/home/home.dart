@@ -19,7 +19,10 @@ class _HomeState extends State<Home> {
       appBar: AppBar(
         backgroundColor: Color(colorPalette["primary"]),
         title: Text("Select your device"),
-      )
+      ),
+      body: Column(
+          children: []
+        )
     );
   }
 }
