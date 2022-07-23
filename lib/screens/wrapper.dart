@@ -22,6 +22,6 @@ class _WrapperState extends State<Wrapper> {
     if(!widget.user.loggedIn) {
       return Authenticate(user: widget.user, loginUserFunction : loginUser);
     }
-   return Home();
+   return Home(user: widget.user);
   }
 }

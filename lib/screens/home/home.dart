@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:esp_app/constants.dart';
+import 'package:esp_app/services/user.dart';
 
 class Home extends StatefulWidget {
+  final User user;
+
+  Home({ this.user });
+
   @override
   State<Home> createState() => _HomeState();
 }
