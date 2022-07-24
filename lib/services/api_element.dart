@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:esp_app/services/user.dart';
 
 class ApiElement {
   String _id;
@@ -6,5 +7,11 @@ class ApiElement {
   static const api_address = "http://10.0.2.2:8080/";
   static final encoding = Encoding.getByName('utf-8');
 
-  
+  Map<String, String> getAppendableAuth() {
+    Map<String, String> credentials =  {
+      'email': User.email,
+      'password': User.password
+    };
+    return credentials;
+  }
 }
