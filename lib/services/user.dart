@@ -74,4 +74,34 @@ class User extends ApiElement {
       return false;
     }
   }
+
+  Future getUserDevices() async {
+    Map<String, String> data = getAppendableAuth();
+
+    final url = ApiElement.api_address + "get_user_devices";
+    final uri = Uri.parse(url);
+    String jsonData = json.encode(data);
+
+    try {
+      Response response = await post(
+        uri,
+        headers: ApiElement.headers,
+        body: jsonData,
+        encoding: ApiElement.encoding
+      );
+
+      int statusCode = response.statusCode;
+
+      if(statusCode == 200) {
+        print(response.body);
+        return true;
+      } else if(statusCode == 204) {
+        return null;
+      }
+      return false;
+    } catch (e) {
+      print(e.message);
+      return false;
+    }
+  }
 }
