@@ -29,16 +29,23 @@ class _HomeState extends State<Home> {
           Widget children;
           if(snapshot.hasData) {
             print(snapshot.data);
-            children = Column(children: [
-              Text('loaded')
+            List devices = snapshot.data;
+            children = Column(children: [SizedBox(height:20),
+              ListView.builder(shrinkWrap: true, itemCount: devices.length, itemBuilder: ((context, index) {
+                return Card(
+                  color: Color(colorPalette["bcg"]),
+                  margin: EdgeInsets.fromLTRB(8, 6, 8, 1),
+                  child: ListTile(
+                    title: Text(devices[index]["name"], style: TextStyle(color: Colors.white)),
+                  )
+                );
+              }))
             ]);
           } else {
-            children = Column(children: [
-              loading
-            ],
+            children = Column(children: [loading],
             mainAxisAlignment: MainAxisAlignment.center,);
           }
-          return Center(child: children );
+          return Center(child: children);
         }
       )
     );
