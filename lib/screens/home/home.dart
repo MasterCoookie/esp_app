@@ -29,14 +29,15 @@ class _HomeState extends State<Home> {
           Widget children;
           if(snapshot.hasData) {
             print(snapshot.data);
-            List devices = snapshot.data;
-            children = Column(children: [SizedBox(height:20),
-              ListView.builder(shrinkWrap: true, itemCount: devices.length, itemBuilder: ((context, index) {
+            
+            children = Column(children: [SizedBox(height:8),
+              ListView.builder(shrinkWrap: true, itemCount: snapshot.data.length, itemBuilder: ((context, index) {
+                dynamic device = snapshot.data[index];
                 return Card(
                   color: Color(colorPalette["bcg"]),
                   margin: EdgeInsets.fromLTRB(8, 6, 8, 1),
                   child: ListTile(
-                    title: Text(devices[index]["name"], style: TextStyle(color: Colors.white)),
+                    title: Text(device["name"], style: TextStyle(color: Colors.white)),
                   )
                 );
               }))
