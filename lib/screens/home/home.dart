@@ -4,10 +4,11 @@ import 'package:esp_app/services/user.dart';
 
 class Home extends StatefulWidget {
   final User user;
+  
 
-  Home({this.user}) {
-    user.getUserDevices();
-  }
+  Home({this.user});
+
+  
 
   @override
   State<Home> createState() => _HomeState();
@@ -22,9 +23,23 @@ class _HomeState extends State<Home> {
         backgroundColor: Color(colorPalette["primary"]),
         title: Text("Select your device"),
       ),
-      body: Column(
-          children: []
-        )
+      body: FutureBuilder(
+        future: widget.user.getUserDevices(),
+        builder: (BuildContext context, AsyncSnapshot snapshot) {
+          Widget children;
+          if(snapshot.hasData) {
+            print(snapshot.data);
+            children = Column(children: [
+              Text('loaded')
+            ]);
+          } else {
+            children = Column(children: [
+              Text('loading')
+            ]);
+          }
+          return Center(child: children );
+        }
+      )
     );
   }
 }
