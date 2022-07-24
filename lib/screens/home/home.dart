@@ -34,8 +34,9 @@ class _HomeState extends State<Home> {
             ]);
           } else {
             children = Column(children: [
-              Text('loading')
-            ]);
+              loading
+            ],
+            mainAxisAlignment: MainAxisAlignment.center,);
           }
           return Center(child: children );
         }

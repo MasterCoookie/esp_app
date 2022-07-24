@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 Map<String, dynamic> colorPalette = {
   "primary": 0xffef5200,
@@ -32,3 +33,13 @@ Future<bool> toastTemplate(String msg) async {
     fontSize: 18
   );
 }
+
+final Center loading = Center(
+  child: RotatedBox(
+    quarterTurns: 1,
+    child: SpinKitPianoWave(
+      color: Color(colorPalette["alt_strong"]),
+      size: 150.0,
+    ),
+  )
+);
