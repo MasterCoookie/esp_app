@@ -5,7 +5,9 @@ import 'package:esp_app/services/user.dart';
 class Home extends StatefulWidget {
   final User user;
 
-  Home({ this.user });
+  Home({this.user}) {
+    user.getUserDevices();
+  }
 
   @override
   State<Home> createState() => _HomeState();

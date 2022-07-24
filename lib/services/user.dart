@@ -93,8 +93,8 @@ class User extends ApiElement {
       int statusCode = response.statusCode;
 
       if(statusCode == 200) {
-        print(response.body);
-        return true;
+        Map<String, dynamic> responseData = jsonDecode(response.body);
+        return responseData["devices"];
       } else if(statusCode == 204) {
         return null;
       }
