@@ -3,8 +3,8 @@ import 'package:http/http.dart';
 import 'dart:convert';
 
 class User extends ApiElement {
-  String email;
-  String password;
+  static String email;
+  static String password;
   bool loggedIn;
 
   User() {
@@ -64,8 +64,8 @@ class User extends ApiElement {
       int statusCode = response.statusCode;
 
       if(statusCode == 200) {
-        this.email = email;
-        this.password = password;
+        User.email = email;
+        User.password = password;
         return true;
       }
       return false;
