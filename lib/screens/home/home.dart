@@ -4,11 +4,8 @@ import 'package:esp_app/services/user.dart';
 
 class Home extends StatefulWidget {
   final User user;
-  
 
   Home({this.user});
-
-  
 
   @override
   State<Home> createState() => _HomeState();
@@ -38,6 +35,9 @@ class _HomeState extends State<Home> {
                   margin: EdgeInsets.fromLTRB(8, 6, 8, 1),
                   child: ListTile(
                     title: Text(device["name"], style: TextStyle(color: Colors.white)),
+                    onTap: () {
+                      Navigator.pushNamed(context, '/deviceWidget', arguments: device);
+                    },
                   )
                 );
               }))

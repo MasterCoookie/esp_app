@@ -4,4 +4,9 @@ import 'package:http/http.dart';
 
 class Device extends ApiElement {
   String deviceName;
+
+  Device(Map device) {
+    deviceName = "lorem";
+    print(device);
+  }
 }
