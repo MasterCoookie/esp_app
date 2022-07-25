@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:esp_app/constants.dart';
 import 'package:esp_app/services/user.dart';
+import 'package:esp_app/services/device.dart';
 
 class Home extends StatefulWidget {
   final User user;
@@ -36,7 +37,7 @@ class _HomeState extends State<Home> {
                   child: ListTile(
                     title: Text(device["name"], style: TextStyle(color: Colors.white)),
                     onTap: () {
-                      Navigator.pushNamed(context, '/deviceWidget', arguments: device);
+                      Navigator.pushNamed(context, '/deviceWidget', arguments: Device(device));
                     },
                   )
                 );
