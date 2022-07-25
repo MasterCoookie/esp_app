@@ -14,4 +14,8 @@ class ApiElement {
     };
     return credentials;
   }
+
+  String get id { return _id; }
+
+  set id(String id) { this._id = id; }
 }

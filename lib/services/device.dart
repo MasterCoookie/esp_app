@@ -6,7 +6,7 @@ class Device extends ApiElement {
   String deviceName;
 
   Device(Map device) {
-    deviceName = "lorem";
-    print(device);
+    this.deviceName = device["name"];
+    super.id = device["id"];
   }
 }
