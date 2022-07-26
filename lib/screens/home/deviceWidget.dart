@@ -9,6 +9,16 @@ class DeviceWidget extends StatefulWidget {
 
 class _DeviceWidgetState extends State<DeviceWidget> {
   
+  void curtainMove(bool up) {
+    if(up) {
+      print("moving up");
+    } else {
+      print("move down");
+    }
+  }
+  void curtainStop() {
+    print("stopped");
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -28,16 +38,26 @@ class _DeviceWidgetState extends State<DeviceWidget> {
         GestureDetector(
           child: IconButton(iconSize: 50, color: Colors.white, icon: Icon(Icons.arrow_upward_sharp, color: Colors.white), onPressed: () {}),
           onLongPressDown: (details) {
-            print("started");
+            curtainMove(true);
           },
           onLongPressUp: () {
-            print("ended");
+            curtainStop();
           },
           onLongPressCancel: () {
-            print("ended");
-          }
-          ),
-        IconButton(iconSize: 50, color: Colors.white, icon: Icon(Icons.arrow_downward_sharp, color: Colors.white), onPressed: () {})
+            curtainStop();
+          }),
+        GestureDetector(
+          child: IconButton(iconSize: 50, color: Colors.white, icon: Icon(Icons.arrow_downward_sharp, color: Colors.white), onPressed: () {}),
+          onLongPressDown: (details) {
+            curtainMove(false);
+          },
+          onLongPressUp: () {
+            curtainStop();
+          },
+          onLongPressCancel: () {
+            curtainStop();
+          }),
+          
         ],
       ),
     );
