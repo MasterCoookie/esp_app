@@ -25,9 +25,7 @@ class _HomeState extends State<Home> {
         future: widget.user.getUserDevices(),
         builder: (BuildContext context, AsyncSnapshot snapshot) {
           Widget children;
-          if(snapshot.hasData) {
-            print(snapshot.data);
-            
+          if(snapshot.hasData) {            
             children = Column(children: [SizedBox(height:8),
               ListView.builder(shrinkWrap: true, itemCount: snapshot.data.length, itemBuilder: ((context, index) {
                 dynamic device = snapshot.data[index];
