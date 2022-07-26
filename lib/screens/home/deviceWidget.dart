@@ -1,16 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:esp_app/services/device.dart';
 import 'package:esp_app/constants.dart';
+import 'package:esp_app/services/bt.dart';
+
 
 class DeviceWidget extends StatefulWidget {
   @override
   State<DeviceWidget> createState() => _DeviceWidgetState();
+
 }
 
 class _DeviceWidgetState extends State<DeviceWidget> {
   
-  void curtainMove(bool up) {
+  void curtainMove(bool up) async {
     if(up) {
+      BT b = new BT("ESP32Test");
+      await b.scanAndConnect();
       print("moving up");
     } else {
       print("move down");
@@ -37,8 +42,8 @@ class _DeviceWidgetState extends State<DeviceWidget> {
         SizedBox(height: 20),
         GestureDetector(
           child: IconButton(iconSize: 50, color: Colors.white, icon: Icon(Icons.arrow_upward_sharp, color: Colors.white), onPressed: () {}),
-          onLongPressDown: (details) {
-            curtainMove(true);
+          onLongPressDown: (details) async {
+            await curtainMove(true);
           },
           onLongPressUp: () {
             curtainStop();
