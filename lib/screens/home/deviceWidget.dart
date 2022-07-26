@@ -13,9 +13,19 @@ class _DeviceWidgetState extends State<DeviceWidget> {
   @override
   Widget build(BuildContext context) {
     final args = ModalRoute.of(context).settings.arguments as Device;
+    print(args.deviceName);
     return Scaffold(
       backgroundColor: Color(colorPalette["secondary"]),
-      body: Column(),
+      body: Column(
+        children: [Padding(
+          padding: const EdgeInsets.fromLTRB(20, 40, 0, 10),
+          child: Row(
+            children: [Text(args.deviceName, style: TextStyle(color: Colors.white, fontSize: 26)),
+            IconButton(color: Colors.white, icon: Icon(Icons.edit, color: Colors.white), onPressed: () {})]
+          ),
+        ),
+        ],
+      ),
     );
   }
 }
