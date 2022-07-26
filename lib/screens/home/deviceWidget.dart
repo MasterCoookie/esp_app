@@ -25,7 +25,18 @@ class _DeviceWidgetState extends State<DeviceWidget> {
           ),
         ),
         SizedBox(height: 20),
-        IconButton(iconSize: 50, color: Colors.white, icon: Icon(Icons.arrow_upward_sharp, color: Colors.white), onPressed: () {}),
+        GestureDetector(
+          child: IconButton(iconSize: 50, color: Colors.white, icon: Icon(Icons.arrow_upward_sharp, color: Colors.white), onPressed: () {}),
+          onLongPressDown: (details) {
+            print("started");
+          },
+          onLongPressUp: () {
+            print("ended");
+          },
+          onLongPressCancel: () {
+            print("ended");
+          }
+          ),
         IconButton(iconSize: 50, color: Colors.white, icon: Icon(Icons.arrow_downward_sharp, color: Colors.white), onPressed: () {})
         ],
       ),
