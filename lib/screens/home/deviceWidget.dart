@@ -24,6 +24,9 @@ class _DeviceWidgetState extends State<DeviceWidget> {
             IconButton(color: Colors.white, icon: Icon(Icons.edit, color: Colors.white), onPressed: () {})]
           ),
         ),
+        SizedBox(height: 20),
+        IconButton(iconSize: 50, color: Colors.white, icon: Icon(Icons.arrow_upward_sharp, color: Colors.white), onPressed: () {}),
+        IconButton(iconSize: 50, color: Colors.white, icon: Icon(Icons.arrow_downward_sharp, color: Colors.white), onPressed: () {})
         ],
       ),
     );
