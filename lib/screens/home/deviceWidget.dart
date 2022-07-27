@@ -11,11 +11,13 @@ class DeviceWidget extends StatefulWidget {
 }
 
 class _DeviceWidgetState extends State<DeviceWidget> {
+
+  //tmp
+  BT b = new BT("ESP32Test");
   
-  void curtainMove(bool up) async {
+  void curtainMove(bool up, String MAC) async {
     if(up) {
-      BT b = new BT("ESP32Test");
-      await b.scanAndConnect();
+      await b.scanAndConnect(MAC);
       print("moving up");
     } else {
       print("move down");
@@ -23,6 +25,7 @@ class _DeviceWidgetState extends State<DeviceWidget> {
   }
   void curtainStop() {
     print("stopped");
+    b.stopScan();
   }
 
   @override
@@ -43,7 +46,8 @@ class _DeviceWidgetState extends State<DeviceWidget> {
         GestureDetector(
           child: IconButton(iconSize: 50, color: Colors.white, icon: Icon(Icons.arrow_upward_sharp, color: Colors.white), onPressed: () {}),
           onLongPressDown: (details) async {
-            curtainMove(true);
+            print(args.MAC);
+            curtainMove(true, args.MAC);
           },
           onLongPressUp: () {
             curtainStop();
@@ -54,7 +58,7 @@ class _DeviceWidgetState extends State<DeviceWidget> {
         GestureDetector(
           child: IconButton(iconSize: 50, color: Colors.white, icon: Icon(Icons.arrow_downward_sharp, color: Colors.white), onPressed: () {}),
           onLongPressDown: (details) {
-            curtainMove(false);
+            //curtainMove(false);
           },
           onLongPressUp: () {
             curtainStop();
