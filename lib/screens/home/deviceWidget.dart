@@ -28,7 +28,7 @@ class _DeviceWidgetState extends State<DeviceWidget> {
   @override
   Widget build(BuildContext context) {
     final args = ModalRoute.of(context).settings.arguments as Device;
-    print(args.deviceName);
+    //print(args.deviceName);
     return Scaffold(
       backgroundColor: Color(colorPalette["secondary"]),
       body: Column(
@@ -43,7 +43,7 @@ class _DeviceWidgetState extends State<DeviceWidget> {
         GestureDetector(
           child: IconButton(iconSize: 50, color: Colors.white, icon: Icon(Icons.arrow_upward_sharp, color: Colors.white), onPressed: () {}),
           onLongPressDown: (details) async {
-            await curtainMove(true);
+            curtainMove(true);
           },
           onLongPressUp: () {
             curtainStop();
