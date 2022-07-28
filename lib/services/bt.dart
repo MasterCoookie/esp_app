@@ -61,11 +61,19 @@ class BT {
     try {
       if(this.remoteServiceAvilable) {
         this.remoteServiceAvilable = false;
-        QuickBlue.writeValue(this.MAC, this.remoteServiceId, this.remoteCharacteristicId, bytes, BleOutputProperty.withResponse);
+        QuickBlue.writeValue(this.MAC, this.remoteServiceId, this.remoteCharacteristicId, bytes, BleOutputProperty.withoutResponse);
+        //TODO: get response
         await Future.delayed(Duration(milliseconds: 100)).then((_) => !this.remoteServiceAvilable);
         this.remoteServiceAvilable = true;
       } else {
-        
+        await Future.doWhile(() async {
+          await Future.delayed(Duration(milliseconds: 25));
+          return !this.remoteServiceAvilable; 
+        });
+        this.remoteServiceAvilable = false;
+        QuickBlue.writeValue(this.MAC, this.remoteServiceId, this.remoteCharacteristicId, bytes, BleOutputProperty.withoutResponse);
+        await Future.delayed(Duration(milliseconds: 100)).then((_) => !this.remoteServiceAvilable);
+        this.remoteServiceAvilable = true;
       }
 
       
