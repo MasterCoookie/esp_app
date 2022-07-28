@@ -63,7 +63,7 @@ class BT {
         this.remoteServiceAvilable = false;
         QuickBlue.writeValue(this.MAC, this.remoteServiceId, this.remoteCharacteristicId, bytes, BleOutputProperty.withoutResponse);
         //TODO: get response
-        await Future.delayed(Duration(milliseconds: 100)).then((_) => !this.remoteServiceAvilable);
+        await Future.delayed(Duration(milliseconds: 100));
         this.remoteServiceAvilable = true;
       } else {
         await Future.doWhile(() async {
@@ -72,11 +72,9 @@ class BT {
         });
         this.remoteServiceAvilable = false;
         QuickBlue.writeValue(this.MAC, this.remoteServiceId, this.remoteCharacteristicId, bytes, BleOutputProperty.withoutResponse);
-        await Future.delayed(Duration(milliseconds: 100)).then((_) => !this.remoteServiceAvilable);
+        await Future.delayed(Duration(milliseconds: 100));
         this.remoteServiceAvilable = true;
       }
-
-      
     } catch(e) {
       print(e.message);
     }     
