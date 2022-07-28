@@ -4,6 +4,8 @@ import 'dart:typed_data';
 
 class BT {
   String name;
+  String remoteServiceId = "eda3620e-0e6a-11ed-861d-0242ac120002";
+  String remoteCharacteristicId = "f67783e2-0e6a-11ed-861d-0242ac120002";
 
   BT(name) {
     QuickBlue.setConnectionHandler(_handleConnectionChange);
@@ -14,20 +16,20 @@ class BT {
   void _handleConnectionChange(String deviceId, BlueConnectionState state) {
     print('_handleConnectionChange $deviceId, $state');
     if(state.value == "connected") {
+      QuickBlue.stopScan();
       QuickBlue.discoverServices(deviceId);
     }
   }
 
   void _handleServiceDiscovery(String deviceId, String serviceId) {
     print('_handleServiceDiscovery $deviceId, $serviceId');    
-    if(serviceId == "4fafc201-1fb5-459e-8fcc-c5c9c331914b") {
-      print("4fafc201-1fb5-459e-8fcc-c5c9c331914b service found!");
+    if(serviceId == remoteServiceId) {
+      print("$remoteServiceId service found!");
       List<int> list = 'dupa'.codeUnits;
       Uint8List bytes = Uint8List.fromList(list);
     
 
-      QuickBlue.writeValue(deviceId, "4fafc201-1fb5-459e-8fcc-c5c9c331914b", "beb5483e-36e1-4688-b7f5-ea07361b26a8", bytes, BleOutputProperty.withResponse);
-      QuickBlue.stopScan();
+      QuickBlue.writeValue(deviceId, remoteServiceId, remoteCharacteristicId, bytes, BleOutputProperty.withResponse);
     }
   }
 
