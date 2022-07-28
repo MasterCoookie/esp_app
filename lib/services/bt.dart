@@ -54,10 +54,15 @@ class BT {
     QuickBlue.stopScan();
   }
 
-  void sendString(String str) {
+  Future sendString(String str) async {
     List<int> list = str.codeUnits;
     Uint8List bytes = Uint8List.fromList(list);
-  
-    QuickBlue.writeValue(this.MAC, this.remoteServiceId, this.remoteCharacteristicId, bytes, BleOutputProperty.withResponse);
+
+    try {
+      QuickBlue.writeValue(this.MAC, this.remoteServiceId, this.remoteCharacteristicId, bytes, BleOutputProperty.withResponse);
+    } catch(PlatformException e) {
+      
+    }
+    
   }
 }
