@@ -38,10 +38,6 @@ class BT {
       if(result.deviceId == MAC) {
         print("matching device found! Connecting...");
         QuickBlue.connect(result.deviceId);
-        
-        
-
-        
       }
     });
 
