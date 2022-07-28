@@ -59,10 +59,18 @@ class BT {
     Uint8List bytes = Uint8List.fromList(list);
 
     try {
-      QuickBlue.writeValue(this.MAC, this.remoteServiceId, this.remoteCharacteristicId, bytes, BleOutputProperty.withResponse);
-    } catch(PlatformException e) {
+      if(this.remoteServiceAvilable) {
+        this.remoteServiceAvilable = false;
+        QuickBlue.writeValue(this.MAC, this.remoteServiceId, this.remoteCharacteristicId, bytes, BleOutputProperty.withResponse);
+        await Future.delayed(Duration(milliseconds: 100)).then((_) => !this.remoteServiceAvilable);
+        this.remoteServiceAvilable = true;
+      } else {
+        
+      }
+
       
-    }
-    
+    } catch(e) {
+      print(e.message);
+    }     
   }
 }
