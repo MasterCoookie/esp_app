@@ -15,9 +15,8 @@ class _DeviceWidgetState extends State<DeviceWidget> {
   //tmp
   BT b = new BT("ESP32Test");
   
-  void curtainMove(bool up, String MAC) async {
+  void curtainMove(bool up) async {
     if(up) {
-      await b.scanAndConnect(MAC);
       print("moving up");
     } else {
       print("move down");
@@ -43,29 +42,43 @@ class _DeviceWidgetState extends State<DeviceWidget> {
           ),
         ),
         SizedBox(height: 20),
-        GestureDetector(
-          child: IconButton(iconSize: 50, color: Colors.white, icon: Icon(Icons.arrow_upward_sharp, color: Colors.white), onPressed: () {}),
-          onLongPressDown: (details) async {
-            print(args.MAC);
-            curtainMove(true, args.MAC);
-          },
-          onLongPressUp: () {
-            curtainStop();
-          },
-          onLongPressCancel: () {
-            curtainStop();
-          }),
-        GestureDetector(
-          child: IconButton(iconSize: 50, color: Colors.white, icon: Icon(Icons.arrow_downward_sharp, color: Colors.white), onPressed: () {}),
-          onLongPressDown: (details) {
-            //curtainMove(false);
-          },
-          onLongPressUp: () {
-            curtainStop();
-          },
-          onLongPressCancel: () {
-            curtainStop();
-          }),
+        FutureBuilder(
+          future: b.scanAndConnect(args.MAC),
+          builder: (context, snapshot) {
+            if(snapshot.hasData) {
+
+            
+            return Column(
+              children: [
+                GestureDetector(
+                  child: IconButton(iconSize: 50, color: Colors.white, icon: Icon(Icons.arrow_upward_sharp, color: Colors.white), onPressed: () {}),
+                  onLongPressDown: (details) async {
+                    curtainMove(true);
+                  },
+                  onLongPressUp: () {
+                    curtainStop();
+                  },
+                  onLongPressCancel: () {
+                    curtainStop();
+                  }),
+                GestureDetector(
+                  child: IconButton(iconSize: 50, color: Colors.white, icon: Icon(Icons.arrow_downward_sharp, color: Colors.white), onPressed: () {}),
+                  onLongPressDown: (details) {
+                    //curtainMove(false);
+                  },
+                  onLongPressUp: () {
+                    curtainStop();
+                  },
+                  onLongPressCancel: () {
+                    curtainStop();
+                  }),
+              ],
+            );
+            } else {
+              return Text("Connecting");
+            }
+          }
+        ),
           
         ],
       ),
