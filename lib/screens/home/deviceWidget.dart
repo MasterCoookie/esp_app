@@ -13,7 +13,7 @@ class DeviceWidget extends StatefulWidget {
 class _DeviceWidgetState extends State<DeviceWidget> {
 
   //tmp
-  BT b = new BT("ESP32Test");
+
   
   void curtainMove(bool up) async {
     if(up) {
@@ -24,12 +24,12 @@ class _DeviceWidgetState extends State<DeviceWidget> {
   }
   void curtainStop() {
     print("stopped");
-    b.stopScan();
   }
 
   @override
   Widget build(BuildContext context) {
     final args = ModalRoute.of(context).settings.arguments as Device;
+    BT b = new BT(args.deviceName, args.MAC);
     //print(args.deviceName);
     return Scaffold(
       backgroundColor: Color(colorPalette["secondary"]),
@@ -43,10 +43,10 @@ class _DeviceWidgetState extends State<DeviceWidget> {
         ),
         SizedBox(height: 20),
         FutureBuilder(
-          future: b.scanAndConnect(args.MAC),
+          future: b.scanAndConnect(),
           builder: (context, snapshot) {
             if(snapshot.hasData) {
-
+              b.stopScan();
             
             return Column(
               children: [
