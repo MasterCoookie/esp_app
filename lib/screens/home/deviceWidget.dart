@@ -15,21 +15,24 @@ class _DeviceWidgetState extends State<DeviceWidget> {
   //tmp
 
   
-  void curtainMove(bool up) async {
+  void curtainMove(bool up, BT b) async {
     if(up) {
       print("moving up");
+      b.sendString("U");
     } else {
       print("move down");
+      b.sendString("D");
     }
   }
-  void curtainStop() {
+  void curtainStop(BT b) {
     print("stopped");
+    b.sendString("S");
   }
 
   @override
   Widget build(BuildContext context) {
     final args = ModalRoute.of(context).settings.arguments as Device;
-    BT b = new BT(args.deviceName, args.MAC);
+    BT bluetooth_le = new BT(args.deviceName, args.MAC);
     //print(args.deviceName);
     return Scaffold(
       backgroundColor: Color(colorPalette["secondary"]),
@@ -43,34 +46,34 @@ class _DeviceWidgetState extends State<DeviceWidget> {
         ),
         SizedBox(height: 20),
         FutureBuilder(
-          future: b.scanAndConnect(),
+          future: bluetooth_le.scanAndConnect(),
           builder: (context, snapshot) {
             if(snapshot.hasData) {
-              b.stopScan();
+              bluetooth_le.stopScan();
             
             return Column(
               children: [
                 GestureDetector(
                   child: IconButton(iconSize: 50, color: Colors.white, icon: Icon(Icons.arrow_upward_sharp, color: Colors.white), onPressed: () {}),
                   onLongPressDown: (details) async {
-                    curtainMove(true);
+                    curtainMove(true, bluetooth_le);
                   },
                   onLongPressUp: () {
-                    curtainStop();
+                    curtainStop(bluetooth_le);
                   },
                   onLongPressCancel: () {
-                    curtainStop();
+                    curtainStop(bluetooth_le);
                   }),
                 GestureDetector(
                   child: IconButton(iconSize: 50, color: Colors.white, icon: Icon(Icons.arrow_downward_sharp, color: Colors.white), onPressed: () {}),
                   onLongPressDown: (details) {
-                    //curtainMove(false);
+                    curtainMove(false, bluetooth_le);
                   },
                   onLongPressUp: () {
-                    curtainStop();
+                    curtainStop(bluetooth_le);
                   },
                   onLongPressCancel: () {
-                    curtainStop();
+                    curtainStop(bluetooth_le);
                   }),
               ],
             );
