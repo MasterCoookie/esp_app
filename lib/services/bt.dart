@@ -6,6 +6,7 @@ class BT {
   String name;
   String remoteServiceId = "eda3620e-0e6a-11ed-861d-0242ac120002";
   String remoteCharacteristicId = "f67783e2-0e6a-11ed-861d-0242ac120002";
+  bool remoteServiceAvilable = false;
 
   BT(name) {
     QuickBlue.setConnectionHandler(_handleConnectionChange);
@@ -25,6 +26,7 @@ class BT {
     print('_handleServiceDiscovery $deviceId, $serviceId');    
     if(serviceId == remoteServiceId) {
       print("$remoteServiceId service found!");
+      remoteServiceAvilable = true;
       List<int> list = 'dupa'.codeUnits;
       Uint8List bytes = Uint8List.fromList(list);
     
@@ -44,8 +46,8 @@ class BT {
     });
 
     QuickBlue.startScan();
-    // ...
-    //QuickBlue.stopScan();
+    await Future.doWhile(() => Future.delayed(Duration(milliseconds: 500)).then((_) => !this.remoteServiceAvilable));
+    return true;
     }
   }
 
