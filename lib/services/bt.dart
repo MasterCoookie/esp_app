@@ -3,10 +3,15 @@ import 'package:permission_handler/permission_handler.dart';
 import 'dart:typed_data';
 import 'package:esp_app/services/user.dart';
 
+enum CharacteristicType {
+  remote, setup
+}
+
 class BT {
   String name;
   String remoteServiceId = "eda3620e-0e6a-11ed-861d-0242ac120002";
   String remoteCharacteristicId = "f67783e2-0e6a-11ed-861d-0242ac120002";
+  String setupCharacteristicId = "2250634e-8aa7-4e3e-b3a1-31d4bbe40127";
   bool remoteServiceAvilable = false;
   String MAC;
 
@@ -30,7 +35,7 @@ class BT {
     if(serviceId == remoteServiceId) {
       print("$remoteServiceId service found!");
       remoteServiceAvilable = true;
-      this.sendString("New connnection from ${User.email}");
+      this.sendString("New connnection from ${User.email}", CharacteristicType.remote);
     }
   }
 
@@ -54,14 +59,22 @@ class BT {
     QuickBlue.stopScan();
   }
 
-  Future sendString(String str) async {
+  Future sendString(String str, CharacteristicType type) async {
     List<int> list = str.codeUnits;
     Uint8List bytes = Uint8List.fromList(list);
+
+    String characteristic;
+
+    if(type == CharacteristicType.remote) {
+      characteristic = this.remoteCharacteristicId;
+    } else {
+      characteristic = this.setupCharacteristicId;
+    }
 
     try {
       if(this.remoteServiceAvilable) {
         this.remoteServiceAvilable = false;
-        QuickBlue.writeValue(this.MAC, this.remoteServiceId, this.remoteCharacteristicId, bytes, BleOutputProperty.withoutResponse);
+        QuickBlue.writeValue(this.MAC, this.remoteServiceId, characteristic, bytes, BleOutputProperty.withoutResponse);
         //TODO: get response
         await Future.delayed(Duration(milliseconds: 100));
         this.remoteServiceAvilable = true;
@@ -71,7 +84,7 @@ class BT {
           return !this.remoteServiceAvilable; 
         });
         this.remoteServiceAvilable = false;
-        QuickBlue.writeValue(this.MAC, this.remoteServiceId, this.remoteCharacteristicId, bytes, BleOutputProperty.withoutResponse);
+        QuickBlue.writeValue(this.MAC, this.remoteServiceId, characteristic, bytes, BleOutputProperty.withoutResponse);
         await Future.delayed(Duration(milliseconds: 100));
         this.remoteServiceAvilable = true;
       }
