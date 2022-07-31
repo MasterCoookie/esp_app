@@ -12,7 +12,7 @@ class DeviceWidgetSettings extends StatefulWidget {
 
 class _DeviceWidgetSettingsState extends State<DeviceWidgetSettings> {
   final _formKey = GlobalKey<FormState>();
-  int value;
+  String value;
   
   @override
   Widget build(BuildContext context) {
@@ -29,14 +29,14 @@ class _DeviceWidgetSettingsState extends State<DeviceWidgetSettings> {
               width: 200,
               child: TextFormField(
                 decoration: textInputFieldDecoration.copyWith(hintText: "Motor Speeed (rpm)"),
-                onChanged: (val) { this.value = int.parse(val); }
+                onChanged: (val) { this.value = val; }
               ),
             ), SizedBox(height: 12),
             ElevatedButton(
               style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Color(colorPalette["alt_strong"]))),
               child: Text("Save", style: TextStyle(color: Colors.white)),
               onPressed: () {
-
+                widget.bt.sendString(value, CharacteristicType.setup);
               }
             )
           ],)
