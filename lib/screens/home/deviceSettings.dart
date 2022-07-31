@@ -37,6 +37,7 @@ class _DeviceWidgetSettingsState extends State<DeviceWidgetSettings> {
               child: Text("Save", style: TextStyle(color: Colors.white)),
               onPressed: () {
                 widget.bt.sendString(value, CharacteristicType.setup);
+                Navigator.pop(context);
               }
             )
           ],)
