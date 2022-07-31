@@ -18,15 +18,15 @@ class _DeviceWidgetState extends State<DeviceWidget> {
   void curtainMove(bool up, BT b) async {
     if(up) {
       print("moving up");
-      b.sendString("U");
+      b.sendString("U", CharacteristicType.remote);
     } else {
       print("move down");
-      b.sendString("D");
+      b.sendString("D", CharacteristicType.remote);
     }
   }
   void curtainStop(BT b) {
     print("stopped");
-    b.sendString("S");
+    b.sendString("S", CharacteristicType.remote);
   }
 
   @override
