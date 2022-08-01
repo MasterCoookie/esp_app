@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:esp_app/services/bt.dart';
 import 'package:esp_app/constants.dart';
+import 'package:esp_app/services/device.dart';
 
 class DeviceWidgetSettings extends StatefulWidget {
   final BT bt;
-  DeviceWidgetSettings({ this.bt });
+  final Device device;
+
+  DeviceWidgetSettings({ this.bt, this.device });
 
   @override
   State<DeviceWidgetSettings> createState() => _DeviceWidgetSettingsState();
