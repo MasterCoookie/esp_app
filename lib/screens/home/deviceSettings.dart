@@ -28,10 +28,20 @@ class _DeviceWidgetSettingsState extends State<DeviceWidgetSettings> {
             SizedBox(
               width: 200,
               child: TextFormField(
-                decoration: textInputFieldDecoration.copyWith(hintText: "Motor Speeed (rpm)"),
+                keyboardType: TextInputType.number,
+                decoration: textInputFieldDecoration.copyWith(hintText: "Motor speeed (rpm)"),
                 onChanged: (val) { this.value = val; }
               ),
             ), SizedBox(height: 12),
+            TextFormField(
+                decoration: textInputFieldDecoration.copyWith(hintText: "Wifi network name"),
+                onChanged: (val) { this.value = val; }
+              ),
+              TextFormField(
+                obscureText: true,
+                decoration: textInputFieldDecoration.copyWith(hintText: "Wifi network password"),
+                onChanged: (val) { this.value = val; }
+              ),
             ElevatedButton(
               style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Color(colorPalette["alt_strong"]))),
               child: Text("Save", style: TextStyle(color: Colors.white)),
