@@ -5,10 +5,16 @@ import 'package:http/http.dart';
 class Device extends ApiElement {
   String deviceName;
   String MAC;
+  int motorSpeed;
+  String wifiName;
+  String wifiPassword;
 
   Device(Map device) {
     this.deviceName = device["name"];
     this.MAC = device["MAC"];
     super.id = device["id"];
+    this.wifiName = device["wifiName"];
+    this.wifiPassword = device["wifiPassword"];
+    this.motorSpeed = device["motorSpeed"];
   }
 }
