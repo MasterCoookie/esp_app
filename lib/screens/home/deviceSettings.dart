@@ -12,7 +12,9 @@ class DeviceWidgetSettings extends StatefulWidget {
 
 class _DeviceWidgetSettingsState extends State<DeviceWidgetSettings> {
   final _formKey = GlobalKey<FormState>();
-  String value;
+  String valueSpeed;
+  String valueWifiName;
+  String valueWifiPassword;
   
   @override
   Widget build(BuildContext context) {
@@ -30,23 +32,23 @@ class _DeviceWidgetSettingsState extends State<DeviceWidgetSettings> {
               child: TextFormField(
                 keyboardType: TextInputType.number,
                 decoration: textInputFieldDecoration.copyWith(hintText: "Motor speeed (rpm)"),
-                onChanged: (val) { this.value = val; }
+                onChanged: (val) { this.valueSpeed = val; }
               ),
             ), SizedBox(height: 12),
             TextFormField(
                 decoration: textInputFieldDecoration.copyWith(hintText: "Wifi network name"),
-                onChanged: (val) { this.value = val; }
+                onChanged: (val) { this.valueWifiName = val; }
               ),
               TextFormField(
                 obscureText: true,
                 decoration: textInputFieldDecoration.copyWith(hintText: "Wifi network password"),
-                onChanged: (val) { this.value = val; }
+                onChanged: (val) { this.valueWifiPassword = val; }
               ),
             ElevatedButton(
               style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Color(colorPalette["alt_strong"]))),
               child: Text("Save", style: TextStyle(color: Colors.white)),
               onPressed: () {
-                widget.bt.sendString(value, CharacteristicType.setup);
+                widget.bt.sendString(valueSpeed, CharacteristicType.setup);
                 Navigator.pop(context);
               }
             )
