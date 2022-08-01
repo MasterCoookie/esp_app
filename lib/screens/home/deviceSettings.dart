@@ -54,6 +54,7 @@ class _DeviceWidgetSettingsState extends State<DeviceWidgetSettings> {
               style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Color(colorPalette["alt_strong"]))),
               child: Text("Save", style: TextStyle(color: Colors.white)),
               onPressed: () {
+                //TODO: different options
                 widget.bt.sendString(valueSpeed, CharacteristicType.setup);
                 Navigator.pop(context);
               }
