@@ -33,16 +33,19 @@ class _DeviceWidgetSettingsState extends State<DeviceWidgetSettings> {
             SizedBox(
               width: 200,
               child: TextFormField(
+                initialValue: widget.device.motorSpeed.toString(),
                 keyboardType: TextInputType.number,
                 decoration: textInputFieldDecoration.copyWith(hintText: "Motor speeed (rpm)"),
                 onChanged: (val) { this.valueSpeed = val; }
               ),
             ), SizedBox(height: 12),
             TextFormField(
+                initialValue: widget.device.wifiName,
                 decoration: textInputFieldDecoration.copyWith(hintText: "Wifi network name"),
                 onChanged: (val) { this.valueWifiName = val; }
               ),
               TextFormField(
+                initialValue: widget.device.wifiPassword,
                 obscureText: true,
                 decoration: textInputFieldDecoration.copyWith(hintText: "Wifi network password"),
                 onChanged: (val) { this.valueWifiPassword = val; }
