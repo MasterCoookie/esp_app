@@ -29,6 +29,10 @@ class _DeviceWidgetState extends State<DeviceWidget> {
     print("stopped");
     b.sendString("S", CharacteristicType.remote);
   }
+  void curtainOpen(BT b) {
+    print("Opening");
+    b.sendString("O", CharacteristicType.remote);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -59,6 +63,7 @@ class _DeviceWidgetState extends State<DeviceWidget> {
             
             return Column(
               children: [
+                IconButton(iconSize: 50, color: Colors.white, icon: Icon(Icons.keyboard_double_arrow_up, color: Colors.white), onPressed: () { curtainOpen(bluetoothLE); }),
                 GestureDetector(
                   child: IconButton(iconSize: 50, color: Colors.white, icon: Icon(Icons.arrow_upward_sharp, color: Colors.white), onPressed: () {}),
                   onLongPressDown: (details) async {
