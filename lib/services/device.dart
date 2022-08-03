@@ -8,6 +8,7 @@ class Device extends ApiElement {
   int motorSpeed;
   String wifiName;
   String wifiPassword;
+  int yPosClosed;
 
   Device(Map device) {
     this.deviceName = device["name"];
@@ -16,5 +17,6 @@ class Device extends ApiElement {
     this.wifiName = device["wifiName"] != null ? device["wifiName"] : "";
     this.wifiPassword = device["wifiPassword"] != null ? device["wifiPassword"] : "";
     this.motorSpeed = device["motorSpeed"] != null ? device["motorSpeed"] : 25;
+    this.yPosClosed = device["YPosClosed"];
   }
 }
