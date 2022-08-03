@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
         '/deviceWidget': (context) => DeviceWidget(),
         '/deviceConfig': (context) => DeviceConfig()
         },
-      title: 'Flutter Demo',
+      title: 'Curtain',
       theme: ThemeData(
         primarySwatch: Colors.red,
       ),
