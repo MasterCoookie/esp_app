@@ -54,6 +54,9 @@ class _DeviceWidgetState extends State<DeviceWidget> {
               showModalBottomSheet(context: context, builder: (context) {
                 return DeviceWidgetSettings(bt: bluetoothLE, device: args);
               });
+            }),
+            IconButton(color: Colors.white, icon: Icon(Icons.perm_data_setting, color: Colors.white), onPressed: () {
+              Navigator.pushNamed(context, '/deviceConfig', arguments: args);
             })],
           ),
         ),
