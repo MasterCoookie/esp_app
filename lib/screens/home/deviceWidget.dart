@@ -33,7 +33,10 @@ class _DeviceWidgetState extends State<DeviceWidget> {
     print("Opening");
     b.sendString("O", CharacteristicType.remote);
   }
-
+  void curtainClose(BT b) {
+      print("Closing");
+      b.sendString("C", CharacteristicType.remote);
+    }
   @override
   Widget build(BuildContext context) {
     final args = ModalRoute.of(context).settings.arguments as Device;
@@ -86,6 +89,7 @@ class _DeviceWidgetState extends State<DeviceWidget> {
                   onLongPressCancel: () {
                     curtainStop(bluetoothLE);
                   }),
+                  IconButton(iconSize: 50, color: Colors.white, icon: Icon(Icons.keyboard_double_arrow_down, color: Colors.white), onPressed: () { curtainClose(bluetoothLE); }),
               ],
             );
             } else {
