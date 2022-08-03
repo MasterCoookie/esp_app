@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
-Map<String, dynamic> colorPalette = {
+const Map<String, dynamic> colorPalette = {
   "primary": 0xffef5200,
   "secondary": 0xfffe6900,
   //this color is literally called "beer"
