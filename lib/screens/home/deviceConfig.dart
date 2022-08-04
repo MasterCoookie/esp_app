@@ -3,10 +3,12 @@ import 'package:esp_app/constants.dart';
 import 'package:esp_app/services/bt.dart';
 import 'package:esp_app/services/device.dart';
 import 'package:esp_app/services/configArgs.dart';
+import 'package:esp_app/services/curtain.dart';
 
 class DeviceConfig extends StatefulWidget {
 
-  const DeviceConfig();
+  DeviceConfig();
+  final curtain = new Curtain();
 
   @override
   State<DeviceConfig> createState() => _DeviceConfigState();
@@ -36,27 +38,27 @@ class _DeviceConfigState extends State<DeviceConfig> {
             children: [
               IconButton(iconSize: 26, color: Colors.white, icon: Icon(Icons.save_sharp, color: Colors.white), onPressed: () {}),
               GestureDetector(
-                child: IconButton(iconSize: 50, color: Colors.white, icon: Icon(Icons.arrow_upward_sharp, color: Colors.white), onPressed: () {}),
+                child: IconButton(iconSize: 50, color: Colors.white, icon: Icon(Icons.arrow_upward_sharp, color: Colors.white), onPressed: () { widget.curtain.curtainOpen(bt, CharacteristicType.setup);}),
                 onLongPressDown: (details) {
-                  
-                },
-                onLongPressUp: () {
-          
-                },
-                onLongPressCancel: () {
-          
-                }),
+                    widget.curtain.curtainMove(true, bt, CharacteristicType.setup);
+                  },
+                  onLongPressUp: () {
+                    widget.curtain.curtainStop(bt, CharacteristicType.setup);
+                  },
+                  onLongPressCancel: () {
+                    widget.curtain.curtainStop(bt, CharacteristicType.setup);
+                  }),
               GestureDetector(
-                child: IconButton(iconSize: 50, color: Colors.white, icon: Icon(Icons.arrow_downward_sharp, color: Colors.white), onPressed: () {}),
+                child: IconButton(iconSize: 50, color: Colors.white, icon: Icon(Icons.arrow_downward_sharp, color: Colors.white), onPressed: () { widget.curtain.curtainOpen(bt, CharacteristicType.setup); }),
                 onLongPressDown: (details) {
-          
-                },
-                onLongPressUp: () {
-          
-                },
-                onLongPressCancel: () {
-          
-                }),
+                    widget.curtain.curtainMove(false, bt, CharacteristicType.setup);
+                  },
+                  onLongPressUp: () {
+                    widget.curtain.curtainStop(bt, CharacteristicType.setup);
+                  },
+                  onLongPressCancel: () {
+                    widget.curtain.curtainStop(bt, CharacteristicType.setup);
+                  }),
                 IconButton(iconSize: 26, color: Colors.white, icon: Icon(Icons.save_sharp, color: Colors.white), onPressed: () {})
             ],
           ),
