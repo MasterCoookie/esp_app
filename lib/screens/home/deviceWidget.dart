@@ -38,8 +38,6 @@ class _DeviceWidgetState extends State<DeviceWidget> {
   Widget build(BuildContext context) {
     final args = ModalRoute.of(context).settings.arguments as Device;
     BT bluetoothLE = new BT(args.deviceName, args.MAC);
-    
-    bluetoothLE.sendString("R", CharacteristicType.remote);
 
     return Scaffold(
       backgroundColor: Color(colorPalette["secondary"]),

@@ -21,8 +21,6 @@ class _DeviceConfigState extends State<DeviceConfig> {
     BT bt = args.bt;
     Device device = args.device;
 
-    bt.sendString("X", CharacteristicType.remote);
-
     return Scaffold(
       backgroundColor: Color(colorPalette["secondary"]),
       appBar: AppBar(
