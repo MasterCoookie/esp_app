@@ -1,16 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:esp_app/constants.dart';
+import 'package:esp_app/services/bt.dart';
+import 'package:esp_app/services/configArgs.dart';
 
 class DeviceConfig extends StatefulWidget {
-  const DeviceConfig({Key key}) : super(key: key);
+
+  const DeviceConfig();
 
   @override
   State<DeviceConfig> createState() => _DeviceConfigState();
 }
 
 class _DeviceConfigState extends State<DeviceConfig> {
+  
   @override
   Widget build(BuildContext context) {
+    final arguments = ModalRoute.of(context).settings.arguments;
+    // BT bt = arguments.
     return Scaffold(
       backgroundColor: Color(colorPalette["secondary"]),
       appBar: AppBar(

@@ -3,6 +3,7 @@ import 'package:esp_app/services/device.dart';
 import 'package:esp_app/constants.dart';
 import 'package:esp_app/services/bt.dart';
 import 'package:esp_app/screens/home/deviceSettings.dart';
+import 'package:esp_app/services/configArgs.dart';
 
 
 class DeviceWidget extends StatefulWidget {
@@ -56,7 +57,7 @@ class _DeviceWidgetState extends State<DeviceWidget> {
               });
             }),
             IconButton(color: Colors.white, icon: Icon(Icons.perm_data_setting, color: Colors.white), onPressed: () {
-              Navigator.pushNamed(context, '/deviceConfig', arguments: args);
+              Navigator.pushNamed(context, '/deviceConfig', arguments: { args, bluetoothLE });
             })],
           ),
         ),
