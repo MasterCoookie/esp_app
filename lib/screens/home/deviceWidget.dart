@@ -57,7 +57,7 @@ class _DeviceWidgetState extends State<DeviceWidget> {
               });
             }),
             IconButton(color: Colors.white, icon: Icon(Icons.perm_data_setting, color: Colors.white), onPressed: () {
-              Navigator.pushNamed(context, '/deviceConfig', arguments: { args, bluetoothLE });
+              Navigator.pushNamed(context, '/deviceConfig', arguments: ConfigArgs(args, bluetoothLE));
             })],
           ),
         ),

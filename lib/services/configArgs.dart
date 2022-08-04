@@ -5,5 +5,5 @@ class ConfigArgs {
   final Device device;
   final BT bt;
 
-  ConfigArgs({ this.device, this.bt });
+  ConfigArgs(this.device, this.bt);
 }
