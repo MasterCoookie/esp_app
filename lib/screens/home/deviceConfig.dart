@@ -24,6 +24,7 @@ class _DeviceConfigState extends State<DeviceConfig> {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              IconButton(iconSize: 26, color: Colors.white, icon: Icon(Icons.save_sharp, color: Colors.white), onPressed: () {}),
               GestureDetector(
                 child: IconButton(iconSize: 50, color: Colors.white, icon: Icon(Icons.arrow_upward_sharp, color: Colors.white), onPressed: () {}),
                 onLongPressDown: (details) {
@@ -46,6 +47,7 @@ class _DeviceConfigState extends State<DeviceConfig> {
                 onLongPressCancel: () {
           
                 }),
+                IconButton(iconSize: 26, color: Colors.white, icon: Icon(Icons.save_sharp, color: Colors.white), onPressed: () {})
             ],
           ),
         ),
