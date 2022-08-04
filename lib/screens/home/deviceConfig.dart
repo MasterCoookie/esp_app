@@ -20,6 +20,9 @@ class _DeviceConfigState extends State<DeviceConfig> {
     ConfigArgs args = arguments;
     BT bt = args.bt;
     Device device = args.device;
+
+    bt.sendString("X", CharacteristicType.remote);
+
     return Scaffold(
       backgroundColor: Color(colorPalette["secondary"]),
       appBar: AppBar(
@@ -37,7 +40,7 @@ class _DeviceConfigState extends State<DeviceConfig> {
               GestureDetector(
                 child: IconButton(iconSize: 50, color: Colors.white, icon: Icon(Icons.arrow_upward_sharp, color: Colors.white), onPressed: () {}),
                 onLongPressDown: (details) {
-          
+                  
                 },
                 onLongPressUp: () {
           
