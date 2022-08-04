@@ -4,36 +4,19 @@ import 'package:esp_app/constants.dart';
 import 'package:esp_app/services/bt.dart';
 import 'package:esp_app/screens/home/deviceSettings.dart';
 import 'package:esp_app/services/configArgs.dart';
+import 'package:esp_app/services/curtain.dart';
 
 
 class DeviceWidget extends StatefulWidget {
+  final curtain = new Curtain();
+
   @override
   State<DeviceWidget> createState() => _DeviceWidgetState();
 
 }
 
 class _DeviceWidgetState extends State<DeviceWidget> {  
-  void curtainMove(bool up, BT b) async {
-    if(up) {
-      print("moving up");
-      b.sendString("U", CharacteristicType.remote);
-    } else {
-      print("move down");
-      b.sendString("D", CharacteristicType.remote);
-    }
-  }
-  void curtainStop(BT b) {
-    print("stopped");
-    b.sendString("S", CharacteristicType.remote);
-  }
-  void curtainOpen(BT b) {
-    print("Opening");
-    b.sendString("O", CharacteristicType.remote);
-  }
-  void curtainClose(BT b) {
-      print("Closing");
-      b.sendString("C", CharacteristicType.remote);
-    }
+  
   @override
   Widget build(BuildContext context) {
     final args = ModalRoute.of(context).settings.arguments as Device;
@@ -66,30 +49,30 @@ class _DeviceWidgetState extends State<DeviceWidget> {
             
             return Column(
               children: [
-                IconButton(iconSize: 50, color: Colors.white, icon: Icon(Icons.keyboard_double_arrow_up, color: Colors.white), onPressed: () { curtainOpen(bluetoothLE); }),
+                IconButton(iconSize: 50, color: Colors.white, icon: Icon(Icons.keyboard_double_arrow_up, color: Colors.white), onPressed: () { widget.curtain.curtainOpen(bluetoothLE, CharacteristicType.remote); }),
                 GestureDetector(
                   child: IconButton(iconSize: 50, color: Colors.white, icon: Icon(Icons.arrow_upward_sharp, color: Colors.white), onPressed: () {}),
                   onLongPressDown: (details) async {
-                    curtainMove(true, bluetoothLE);
+                    widget.curtain.curtainMove(true, bluetoothLE, CharacteristicType.remote);
                   },
                   onLongPressUp: () {
-                    curtainStop(bluetoothLE);
+                    widget.curtain.curtainStop(bluetoothLE, CharacteristicType.remote);
                   },
                   onLongPressCancel: () {
-                    curtainStop(bluetoothLE);
+                    widget.curtain.curtainStop(bluetoothLE, CharacteristicType.remote);
                   }),
                 GestureDetector(
                   child: IconButton(iconSize: 50, color: Colors.white, icon: Icon(Icons.arrow_downward_sharp, color: Colors.white), onPressed: () {}),
                   onLongPressDown: (details) {
-                    curtainMove(false, bluetoothLE);
+                    widget.curtain.curtainMove(false, bluetoothLE, CharacteristicType.remote);
                   },
                   onLongPressUp: () {
-                    curtainStop(bluetoothLE);
+                    widget.curtain.curtainStop(bluetoothLE, CharacteristicType.remote);
                   },
                   onLongPressCancel: () {
-                    curtainStop(bluetoothLE);
+                    widget.curtain.curtainStop(bluetoothLE, CharacteristicType.remote);
                   }),
-                  IconButton(iconSize: 50, color: Colors.white, icon: Icon(Icons.keyboard_double_arrow_down, color: Colors.white), onPressed: () { curtainClose(bluetoothLE); }),
+                  IconButton(iconSize: 50, color: Colors.white, icon: Icon(Icons.keyboard_double_arrow_down, color: Colors.white), onPressed: () { widget.curtain.curtainClose(bluetoothLE, CharacteristicType.remote); }),
               ],
             );
             } else {
