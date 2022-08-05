@@ -36,9 +36,9 @@ class _DeviceConfigState extends State<DeviceConfig> {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              IconButton(iconSize: 26, color: Colors.white, icon: Icon(Icons.save_sharp, color: Colors.white), onPressed: () {}),
+              IconButton(iconSize: 26, color: Colors.white, icon: Icon(Icons.save_sharp, color: Colors.white), onPressed: () { widget.curtain.curtainOpen(bt, CharacteristicType.setup); }),
               GestureDetector(
-                child: IconButton(iconSize: 50, color: Colors.white, icon: Icon(Icons.arrow_upward_sharp, color: Colors.white), onPressed: () { widget.curtain.curtainOpen(bt, CharacteristicType.setup);}),
+                child: IconButton(iconSize: 50, color: Colors.white, icon: Icon(Icons.arrow_upward_sharp, color: Colors.white), onPressed: () {}),
                 onLongPressDown: (details) {
                     widget.curtain.curtainMove(true, bt, CharacteristicType.setup);
                   },
@@ -49,7 +49,7 @@ class _DeviceConfigState extends State<DeviceConfig> {
                     widget.curtain.curtainStop(bt, CharacteristicType.setup);
                   }),
               GestureDetector(
-                child: IconButton(iconSize: 50, color: Colors.white, icon: Icon(Icons.arrow_downward_sharp, color: Colors.white), onPressed: () { widget.curtain.curtainClose(bt, CharacteristicType.setup); }),
+                child: IconButton(iconSize: 50, color: Colors.white, icon: Icon(Icons.arrow_downward_sharp, color: Colors.white), onPressed: () {}),
                 onLongPressDown: (details) {
                     widget.curtain.curtainMove(false, bt, CharacteristicType.setup);
                   },
@@ -59,7 +59,7 @@ class _DeviceConfigState extends State<DeviceConfig> {
                   onLongPressCancel: () {
                     widget.curtain.curtainStop(bt, CharacteristicType.setup);
                   }),
-                IconButton(iconSize: 26, color: Colors.white, icon: Icon(Icons.save_sharp, color: Colors.white), onPressed: () {})
+                IconButton(iconSize: 26, color: Colors.white, icon: Icon(Icons.save_sharp, color: Colors.white), onPressed: () { widget.curtain.curtainClose(bt, CharacteristicType.setup); })
             ],
           ),
         ),
