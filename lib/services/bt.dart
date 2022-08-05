@@ -23,7 +23,7 @@ class BT {
   }
 
   void _handleConnectionChange(String deviceId, BlueConnectionState state) {
-    print('_handleConnectionChange $deviceId, $state');
+    print('_handleConnectionChange $deviceId, ${state.value}');
     if(state.value == "connected") {
       QuickBlue.stopScan();
       QuickBlue.discoverServices(deviceId);
