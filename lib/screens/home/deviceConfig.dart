@@ -49,7 +49,7 @@ class _DeviceConfigState extends State<DeviceConfig> {
                     widget.curtain.curtainStop(bt, CharacteristicType.setup);
                   }),
               GestureDetector(
-                child: IconButton(iconSize: 50, color: Colors.white, icon: Icon(Icons.arrow_downward_sharp, color: Colors.white), onPressed: () { widget.curtain.curtainOpen(bt, CharacteristicType.setup); }),
+                child: IconButton(iconSize: 50, color: Colors.white, icon: Icon(Icons.arrow_downward_sharp, color: Colors.white), onPressed: () { widget.curtain.curtainClose(bt, CharacteristicType.setup); }),
                 onLongPressDown: (details) {
                     widget.curtain.curtainMove(false, bt, CharacteristicType.setup);
                   },
