@@ -33,7 +33,10 @@ class _DeviceConfigState extends State<DeviceConfig> {
       body: Center(
         child: Column(
           children: [
-            
+            Padding(
+              padding: const EdgeInsets.fromLTRB(10, 40, 10, 25),
+              child: Text("Use below arrows to adjust curtain position.\nThen, press the relevant save button, to save the position as either \"Open\" or \"Closed\" position.", style: TextStyle(color: Colors.white)),
+            ),
             IconButton(iconSize: 26, color: Colors.white, icon: Icon(Icons.save_sharp, color: Colors.white), onPressed: () { widget.curtain.curtainOpen(bt, CharacteristicType.setup); }),
             GestureDetector(
               child: IconButton(iconSize: 50, color: Colors.white, icon: Icon(Icons.arrow_upward_sharp, color: Colors.white), onPressed: () {}),
