@@ -26,42 +26,39 @@ class _DeviceConfigState extends State<DeviceConfig> {
     return Scaffold(
       backgroundColor: Color(colorPalette["secondary"]),
       appBar: AppBar(
+        backgroundColor: Color(colorPalette["primary"]),
         title: Text("Configure your curtain", style: TextStyle(color: Colors.white)),
-        actions: [IconButton(iconSize: 26, color: Colors.white, icon: Icon(Icons.check_circle, color: Colors.white), onPressed: () {})]
+        actions: [IconButton(iconSize: 26, color: Colors.white, icon: Icon(Icons.check_circle, color: Colors.white), onPressed: () { Navigator.pop(context); })]
       ),
-      body: IntrinsicWidth(
-        child: Center(
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              IconButton(iconSize: 26, color: Colors.white, icon: Icon(Icons.save_sharp, color: Colors.white), onPressed: () { widget.curtain.curtainOpen(bt, CharacteristicType.setup); }),
-              GestureDetector(
-                child: IconButton(iconSize: 50, color: Colors.white, icon: Icon(Icons.arrow_upward_sharp, color: Colors.white), onPressed: () {}),
-                onLongPressDown: (details) {
-                    widget.curtain.curtainMove(true, bt, CharacteristicType.setup);
-                  },
-                  onLongPressUp: () {
-                    widget.curtain.curtainStop(bt, CharacteristicType.setup);
-                  },
-                  onLongPressCancel: () {
-                    widget.curtain.curtainStop(bt, CharacteristicType.setup);
-                  }),
-              GestureDetector(
-                child: IconButton(iconSize: 50, color: Colors.white, icon: Icon(Icons.arrow_downward_sharp, color: Colors.white), onPressed: () {}),
-                onLongPressDown: (details) {
-                    widget.curtain.curtainMove(false, bt, CharacteristicType.setup);
-                  },
-                  onLongPressUp: () {
-                    widget.curtain.curtainStop(bt, CharacteristicType.setup);
-                  },
-                  onLongPressCancel: () {
-                    widget.curtain.curtainStop(bt, CharacteristicType.setup);
-                  }),
-                IconButton(iconSize: 26, color: Colors.white, icon: Icon(Icons.save_sharp, color: Colors.white), onPressed: () { widget.curtain.curtainClose(bt, CharacteristicType.setup); })
-            ],
-          ),
+      body: Center(
+        child: Column(
+          children: [
+            
+            IconButton(iconSize: 26, color: Colors.white, icon: Icon(Icons.save_sharp, color: Colors.white), onPressed: () { widget.curtain.curtainOpen(bt, CharacteristicType.setup); }),
+            GestureDetector(
+              child: IconButton(iconSize: 50, color: Colors.white, icon: Icon(Icons.arrow_upward_sharp, color: Colors.white), onPressed: () {}),
+              onLongPressDown: (details) {
+                  widget.curtain.curtainMove(true, bt, CharacteristicType.setup);
+                },
+                onLongPressUp: () {
+                  widget.curtain.curtainStop(bt, CharacteristicType.setup);
+                },
+                onLongPressCancel: () {
+                  widget.curtain.curtainStop(bt, CharacteristicType.setup);
+                }),
+            GestureDetector(
+              child: IconButton(iconSize: 50, color: Colors.white, icon: Icon(Icons.arrow_downward_sharp, color: Colors.white), onPressed: () {}),
+              onLongPressDown: (details) {
+                  widget.curtain.curtainMove(false, bt, CharacteristicType.setup);
+                },
+                onLongPressUp: () {
+                  widget.curtain.curtainStop(bt, CharacteristicType.setup);
+                },
+                onLongPressCancel: () {
+                  widget.curtain.curtainStop(bt, CharacteristicType.setup);
+                }),
+              IconButton(iconSize: 26, color: Colors.white, icon: Icon(Icons.save_sharp, color: Colors.white), onPressed: () { widget.curtain.curtainClose(bt, CharacteristicType.setup); })
+          ],
         ),
       ),
     );
