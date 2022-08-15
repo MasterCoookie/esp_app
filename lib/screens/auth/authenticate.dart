@@ -26,6 +26,6 @@ class _AuthenticateState extends State<Authenticate> {
     if(showLogin) {
       return Container(child: Login(toggleViewFunction: toggleView, user: widget.user, loginUserFunction : widget.loginUserFunction));
     }
-    return Container(child: Register(toggleViewFunction: toggleView));
+    return Container(child: Register(toggleViewFunction: toggleView, loginUserFunction : widget.loginUserFunction ));
   }
 }

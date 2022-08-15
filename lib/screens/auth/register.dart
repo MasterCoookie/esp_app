@@ -5,8 +5,10 @@ import 'package:esp_app/services/user.dart';
 class Register extends StatefulWidget {
 
   final Function toggleViewFunction;
+  final Function loginUserFunction;
+  final User user = new User();
 
-  Register({ this.toggleViewFunction });
+  Register({ this.toggleViewFunction, this.loginUserFunction });
 
   @override
   State<Register> createState() => _RegisterState();
@@ -23,6 +25,14 @@ class _RegisterState extends State<Register> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      //tmp
+      floatingActionButton: FloatingActionButton(
+        onPressed: () async {
+          await widget.user.apiLogin('jan.kocurek@proton.me', 'dupa1234');
+          widget.loginUserFunction();
+        },
+        child: const Icon(Icons.skip_next)
+      ),
       backgroundColor: Color(colorPalette["secondary"]),
       appBar: AppBar(
         backgroundColor: Color(colorPalette["primary"]),
@@ -72,8 +82,7 @@ class _RegisterState extends State<Register> {
               style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Color(colorPalette["alt_strong"]))),
               onPressed: () async {
                 if(_formKey.currentState.validate()) {
-                  final User user = new User();
-                  if(await user.apiRegister(email, password)) {
+                  if(await widget.user.apiRegister(email, password)) {
                     await toastTemplate('Registered sucessfully');
                     widget.toggleViewFunction();
                   } else {
