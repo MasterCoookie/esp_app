@@ -37,11 +37,11 @@ class _DeviceConfigState extends State<DeviceConfig> {
               padding: const EdgeInsets.fromLTRB(10, 40, 10, 25),
               child: Text("Use below arrows to adjust curtain position.\nThen, press the relevant save button, to save the position as either \"Open\" or \"Closed\" position.", style: TextStyle(color: Colors.white)),
             ),
-            IconButton(iconSize: 26, color: Colors.white, icon: Icon(Icons.save_sharp, color: Colors.white), onPressed: () { widget.curtain.curtainOpen(bt, CharacteristicType.setup); }),
+            IconButton(iconSize: 26, color: Colors.white, icon: Icon(Icons.save_sharp, color: Colors.white), onPressed: () { widget.curtain.curtainClose(bt, CharacteristicType.setup); }),
             GestureDetector(
               child: IconButton(iconSize: 50, color: Colors.white, icon: Icon(Icons.arrow_upward_sharp, color: Colors.white), onPressed: () {}),
               onLongPressDown: (details) {
-                  widget.curtain.curtainMove(true, bt, CharacteristicType.setup);
+                  widget.curtain.curtainMove(false, bt, CharacteristicType.setup);
                 },
                 onLongPressUp: () {
                   widget.curtain.curtainStop(bt, CharacteristicType.setup);
@@ -52,7 +52,7 @@ class _DeviceConfigState extends State<DeviceConfig> {
             GestureDetector(
               child: IconButton(iconSize: 50, color: Colors.white, icon: Icon(Icons.arrow_downward_sharp, color: Colors.white), onPressed: () {}),
               onLongPressDown: (details) {
-                  widget.curtain.curtainMove(false, bt, CharacteristicType.setup);
+                  widget.curtain.curtainMove(true, bt, CharacteristicType.setup);
                 },
                 onLongPressUp: () {
                   widget.curtain.curtainStop(bt, CharacteristicType.setup);
@@ -60,7 +60,7 @@ class _DeviceConfigState extends State<DeviceConfig> {
                 onLongPressCancel: () {
                   widget.curtain.curtainStop(bt, CharacteristicType.setup);
                 }),
-              IconButton(iconSize: 26, color: Colors.white, icon: Icon(Icons.save_sharp, color: Colors.white), onPressed: () { widget.curtain.curtainClose(bt, CharacteristicType.setup); })
+              IconButton(iconSize: 26, color: Colors.white, icon: Icon(Icons.save_sharp, color: Colors.white), onPressed: () { widget.curtain.curtainOpen(bt, CharacteristicType.setup); })
           ],
         ),
       ),
