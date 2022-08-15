@@ -49,11 +49,11 @@ class _DeviceWidgetState extends State<DeviceWidget> {
             
             return Column(
               children: [
-                IconButton(iconSize: 50, color: Colors.white, icon: Icon(Icons.keyboard_double_arrow_up, color: Colors.white), onPressed: () { widget.curtain.curtainOpen(bluetoothLE, CharacteristicType.remote); }),
+                IconButton(iconSize: 50, color: Colors.white, icon: Icon(Icons.keyboard_double_arrow_up, color: Colors.white), onPressed: () { widget.curtain.curtainClose(bluetoothLE, CharacteristicType.remote); }),
                 GestureDetector(
                   child: IconButton(iconSize: 50, color: Colors.white, icon: Icon(Icons.arrow_upward_sharp, color: Colors.white), onPressed: () {}),
                   onLongPressDown: (details) async {
-                    widget.curtain.curtainMove(true, bluetoothLE, CharacteristicType.remote);
+                    widget.curtain.curtainMove(false, bluetoothLE, CharacteristicType.remote);
                   },
                   onLongPressUp: () {
                     widget.curtain.curtainStop(bluetoothLE, CharacteristicType.remote);
@@ -64,7 +64,7 @@ class _DeviceWidgetState extends State<DeviceWidget> {
                 GestureDetector(
                   child: IconButton(iconSize: 50, color: Colors.white, icon: Icon(Icons.arrow_downward_sharp, color: Colors.white), onPressed: () {}),
                   onLongPressDown: (details) {
-                    widget.curtain.curtainMove(false, bluetoothLE, CharacteristicType.remote);
+                    widget.curtain.curtainMove(true, bluetoothLE, CharacteristicType.remote);
                   },
                   onLongPressUp: () {
                     widget.curtain.curtainStop(bluetoothLE, CharacteristicType.remote);
@@ -72,7 +72,7 @@ class _DeviceWidgetState extends State<DeviceWidget> {
                   onLongPressCancel: () {
                     widget.curtain.curtainStop(bluetoothLE, CharacteristicType.remote);
                   }),
-                  IconButton(iconSize: 50, color: Colors.white, icon: Icon(Icons.keyboard_double_arrow_down, color: Colors.white), onPressed: () { widget.curtain.curtainClose(bluetoothLE, CharacteristicType.remote); }),
+                  IconButton(iconSize: 50, color: Colors.white, icon: Icon(Icons.keyboard_double_arrow_down, color: Colors.white), onPressed: () { widget.curtain.curtainOpen(bluetoothLE, CharacteristicType.remote); }),
               ],
             );
             } else {
