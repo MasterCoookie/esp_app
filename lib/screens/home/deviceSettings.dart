@@ -49,7 +49,15 @@ class _DeviceWidgetSettingsState extends State<DeviceWidgetSettings> {
                 obscureText: true,
                 decoration: textInputFieldDecoration.copyWith(hintText: "Wifi network password"),
                 onChanged: (val) { this.valueWifiPassword = val; }
-              ),
+              ),ElevatedButton(
+              style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Color(colorPalette["alt_strong"]))),
+              child: Text("Push user credentials", style: TextStyle(color: Colors.white)),
+              onPressed: () {
+                //TODO: different options
+                widget.bt.sendString(valueSpeed, CharacteristicType.setup);
+                Navigator.pop(context);
+              }
+            ),
             ElevatedButton(
               style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Color(colorPalette["alt_strong"]))),
               child: Text("Save", style: TextStyle(color: Colors.white)),
