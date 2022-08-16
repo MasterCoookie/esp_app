@@ -55,9 +55,7 @@ class _DeviceWidgetSettingsState extends State<DeviceWidgetSettings> {
               style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Color(colorPalette["alt_strong"]))),
               child: Text("Push user credentials", style: TextStyle(color: Colors.white)),
               onPressed: () {
-                //TODO: different options
                 widget.bt.sendString(("C" + User.email + " \t " + User.password), CharacteristicType.setup);
-                Navigator.pop(context);
               }
             ),
             ElevatedButton(
