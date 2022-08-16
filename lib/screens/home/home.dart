@@ -35,7 +35,7 @@ class _HomeState extends State<Home> {
                   child: ListTile(
                     title: Text(device["name"], style: TextStyle(color: Colors.white)),
                     onTap: () {
-                      Navigator.pushNamed(context, '/deviceWidget', arguments: Device(device));
+                      Navigator.pushNamed(context, '/deviceWidget', arguments: Device(device, widget.user));
                     },
                   )
                 );

@@ -21,6 +21,7 @@ class _DeviceWidgetSettingsState extends State<DeviceWidgetSettings> {
   
   @override
   Widget build(BuildContext context) {
+    this.valueSpeed = widget.device.motorSpeed.toString();
     return SingleChildScrollView(
       child: Container(
         color: Color(colorPalette["bcg_secondary"]),
@@ -54,7 +55,7 @@ class _DeviceWidgetSettingsState extends State<DeviceWidgetSettings> {
               child: Text("Push user credentials", style: TextStyle(color: Colors.white)),
               onPressed: () {
                 //TODO: different options
-                widget.bt.sendString(valueSpeed, CharacteristicType.setup);
+                widget.bt.sendString(("C" + valueSpeed), CharacteristicType.setup);
                 Navigator.pop(context);
               }
             ),
@@ -63,7 +64,7 @@ class _DeviceWidgetSettingsState extends State<DeviceWidgetSettings> {
               child: Text("Save", style: TextStyle(color: Colors.white)),
               onPressed: () {
                 //TODO: different options
-                widget.bt.sendString(valueSpeed, CharacteristicType.setup);
+                widget.bt.sendString(("S" + valueSpeed), CharacteristicType.setup);
                 Navigator.pop(context);
               }
             )
