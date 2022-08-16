@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:esp_app/services/bt.dart';
 import 'package:esp_app/constants.dart';
 import 'package:esp_app/services/device.dart';
+import 'package:esp_app/services/user.dart';
 
 class DeviceWidgetSettings extends StatefulWidget {
   final BT bt;
@@ -55,7 +56,7 @@ class _DeviceWidgetSettingsState extends State<DeviceWidgetSettings> {
               child: Text("Push user credentials", style: TextStyle(color: Colors.white)),
               onPressed: () {
                 //TODO: different options
-                widget.bt.sendString(("C" + valueSpeed), CharacteristicType.setup);
+                widget.bt.sendString(("C" + User.email + " \t " + User.password), CharacteristicType.setup);
                 Navigator.pop(context);
               }
             ),

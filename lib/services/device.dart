@@ -12,7 +12,7 @@ class Device extends ApiElement {
   int yPosClosed;
   User owner;
 
-  Device(Map device, User owner) {
+  Device(Map device) {
     this.deviceName = device["name"];
     this.MAC = device["MAC"];
     super.id = device["id"];
