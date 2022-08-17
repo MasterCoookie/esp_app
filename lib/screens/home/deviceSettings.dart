@@ -22,7 +22,6 @@ class _DeviceWidgetSettingsState extends State<DeviceWidgetSettings> {
   
   @override
   Widget build(BuildContext context) {
-    this.valueSpeed = widget.device.motorSpeed.toString();
     return SingleChildScrollView(
       child: Container(
         color: Color(colorPalette["bcg_secondary"]),
@@ -38,7 +37,9 @@ class _DeviceWidgetSettingsState extends State<DeviceWidgetSettings> {
                 initialValue: widget.device.motorSpeed.toString(),
                 keyboardType: TextInputType.number,
                 decoration: textInputFieldDecoration.copyWith(hintText: "Motor speeed (rpm)"),
-                onChanged: (val) { this.valueSpeed = val; }
+                onChanged: (val) {
+                  setState(() => valueSpeed = val);
+                }
               ),
             ), SizedBox(height: 12),
             TextFormField(
@@ -61,9 +62,12 @@ class _DeviceWidgetSettingsState extends State<DeviceWidgetSettings> {
             ElevatedButton(
               style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Color(colorPalette["alt_strong"]))),
               child: Text("Save", style: TextStyle(color: Colors.white)),
-              onPressed: () {
+              onPressed: () async {
+                if(valueSpeed == null) {
+                  this.valueSpeed = widget.device.motorSpeed.toString();
+                }
                 //TODO: different options
-                widget.bt.sendString(("S" + valueSpeed), CharacteristicType.setup);
+                await widget.bt.sendString(("S" + valueSpeed), CharacteristicType.setup);
                 Navigator.pop(context);
               }
             )
