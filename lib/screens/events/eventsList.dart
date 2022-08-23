@@ -23,12 +23,7 @@ class _EventsListState extends State<EventsList> {
           builder: (context, snapshot) {
             if(snapshot.hasData) {
               print(snapshot.data);
-              if(snapshot.data) {
-                return Text("all good");
-              } else {
-                return Text("err");
-              }
-              
+              return Text("all good");
             } else {
               return Text("loading");
             }

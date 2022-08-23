@@ -26,7 +26,6 @@ class Device extends ApiElement {
   Future getDeviceEvents() async {
     Map<String, String> data = getAppendableAuth();
     data["deviceID"] = super.id;
-    print(data);
 
     final url = ApiElement.api_address + "get_device_events";
     final uri = Uri.parse(url);
@@ -46,10 +45,10 @@ class Device extends ApiElement {
         return json.decode(response.body)["events"];
       }
       print(statusCode);
-      return false;
+      return [];
     } catch (e) {
       print("Error: " + e.message);
-      return false;
+      return [];
     }
   }
 }
