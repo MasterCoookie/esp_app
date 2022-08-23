@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:esp_app/services/device.dart';
+import 'package:esp_app/services/deviceEvent.dart';
 import 'package:esp_app/constants.dart';
 
 class EventsList extends StatefulWidget {
@@ -23,7 +24,12 @@ class _EventsListState extends State<EventsList> {
           builder: (context, snapshot) {
             if(snapshot.hasData) {
               print(snapshot.data);
-              return Text("all good");
+              return ListView.builder(itemCount: snapshot.data.length, itemBuilder: (context, index) {
+                final event = snapshot.data[index];
+                return ListTile(
+                  title: event.
+                );
+              });
             } else {
               return Text("loading");
             }
