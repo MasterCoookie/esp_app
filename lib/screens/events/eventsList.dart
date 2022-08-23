@@ -25,9 +25,9 @@ class _EventsListState extends State<EventsList> {
             if(snapshot.hasData) {
               print(snapshot.data);
               return ListView.builder(itemCount: snapshot.data.length, itemBuilder: (context, index) {
-                final event = snapshot.data[index];
+                final event = DeviceEvent.fromJSON(snapshot.data[index]);
                 return ListTile(
-                  title: event.
+                  title: Text(event.eventTime.toString())
                 );
               });
             } else {
