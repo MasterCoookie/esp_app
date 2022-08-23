@@ -23,6 +23,12 @@ class _DeviceWidgetState extends State<DeviceWidget> {
     BT bluetoothLE = new BT(args.deviceName, args.MAC);
 
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        child: const Icon(Icons.event),
+        onPressed: () {
+          
+        }
+      ),
       backgroundColor: Color(colorPalette["secondary"]),
       body: Column(
         children: [Padding(
