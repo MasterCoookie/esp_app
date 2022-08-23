@@ -7,4 +7,15 @@ class DeviceEvent extends ApiElement {
   int targetYpos;
   bool repeatable;
   List<bool> repeat;
+
+  DeviceEvent({
+    this.eventTime,
+    this.targetYpos,
+    this.repeatable,
+    this.repeat
+  });
+
+  factory DeviceEvent.fromJSON(Map<String, dynamic> json) {
+    return DeviceEvent();
+  }
 }
