@@ -27,7 +27,7 @@ class _HomeState extends State<Home> {
           Widget children;
           if(snapshot.hasData) {            
             children = Column(children: [SizedBox(height:8),
-              ListView.builder(shrinkWrap: true, itemCount: snapshot.data.length, itemBuilder: ((context, index) {
+              ListView.builder(shrinkWrap: true, itemCount: snapshot.data ? snapshot.data.length : 0, itemBuilder: ((context, index) {
                 dynamic device = snapshot.data[index];
                 return Card(
                   color: Color(colorPalette["bcg"]),

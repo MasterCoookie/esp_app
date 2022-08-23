@@ -19,9 +19,19 @@ class _EventsListState extends State<EventsList> {
       ),
       body: Container(
         child: FutureBuilder(
-          future: ,
+          future: args.getDeviceEvents(),
           builder: (context, snapshot) {
-
+            if(snapshot.hasData) {
+              print(snapshot.data);
+              if(snapshot.data) {
+                return Text("all good");
+              } else {
+                return Text("err");
+              }
+              
+            } else {
+              return Text("loading");
+            }
           }
         )
       )
