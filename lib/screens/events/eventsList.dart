@@ -18,7 +18,12 @@ class _EventsListState extends State<EventsList> {
         title: Text(args.deviceName)
       ),
       body: Container(
+        child: FutureBuilder(
+          future: ,
+          builder: (context, snapshot) {
 
+          }
+        )
       )
     );
   }
