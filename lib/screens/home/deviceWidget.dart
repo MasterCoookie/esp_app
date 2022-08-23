@@ -26,7 +26,7 @@ class _DeviceWidgetState extends State<DeviceWidget> {
       floatingActionButton: FloatingActionButton(
         child: const Icon(Icons.event),
         onPressed: () {
-          
+          Navigator.pushNamed(context, '/eventsList', arguments: args);
         }
       ),
       backgroundColor: Color(colorPalette["secondary"]),
