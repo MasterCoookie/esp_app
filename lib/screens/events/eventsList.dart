@@ -28,8 +28,16 @@ class _EventsListState extends State<EventsList> {
               return ListView.builder(itemCount: snapshot.data.length, itemBuilder: (context, index) {
                 final event = DeviceEvent.fromJSON(snapshot.data[index]);
                 final time = DateFormat("HH:mm").format(DateTime.fromMillisecondsSinceEpoch(event.eventTime * 1000));
-                return ListTile(
-                  title: Text(time.toString()),
+                return Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: ListTile(
+                    tileColor: Color(colorPalette["primary"]),
+                    title: Text(time.toString(), style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20.0,  
+                    )),
+                  ),
                 );
               });
             } else {
