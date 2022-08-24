@@ -32,9 +32,9 @@ class _EventsListState extends State<EventsList> {
                 return Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: ListTile(
-                    tileColor: Color(colorPalette["primary"]),
+                    tileColor: Color(colorPalette["bcg"]),
                     leading: Text(time.toString(), style: TextStyle(
-                      color: Colors.white,
+                      color: Color(colorPalette["primary"]),
                       fontWeight: FontWeight.bold,
                       fontSize: 20.0,  
                     )),
