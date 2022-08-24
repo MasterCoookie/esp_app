@@ -24,9 +24,9 @@ class Device extends ApiElement {
   }
 
   Future getDeviceEvents() async {
-    Map<String, String> data = getAppendableAuth();
+    Map<String, dynamic> data = getAppendableAuth();
     data["deviceID"] = super.id;
-    data[""]
+    data["getTimeAsTimestamp"] = "true";
 
     final url = ApiElement.api_address + "get_device_events";
     final uri = Uri.parse(url);

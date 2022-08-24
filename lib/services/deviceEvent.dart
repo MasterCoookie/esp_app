@@ -6,7 +6,7 @@ class DeviceEvent extends ApiElement {
   int eventTime;
   int targetYpos;
   bool repeatable;
-  List<bool> repeat;
+  List<dynamic> repeat;
 
   DeviceEvent({
     this.eventTime,
