@@ -15,9 +15,9 @@ class EventRepeatitions extends StatelessWidget {
         child: ListView.builder(shrinkWrap: true, scrollDirection: Axis.horizontal, itemCount: event.repeat.length, itemBuilder: (context, index) {
           TextStyle style;
           if(event.repeat[index]) {
-            style = TextStyle();
+            style = TextStyle(fontWeight: FontWeight.bold, color: Colors.white, decoration: TextDecoration.underline);
           } else {
-            style = TextStyle();
+            style = TextStyle(fontWeight: FontWeight.bold, color: Color.fromARGB(172, 109, 104, 104));
           }
           
           return Padding(
