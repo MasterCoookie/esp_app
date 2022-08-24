@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:esp_app/services/device.dart';
 import 'package:esp_app/services/deviceEvent.dart';
 import 'package:esp_app/constants.dart';
+import 'package:intl/intl.dart';
 
 class EventsList extends StatefulWidget {
   @override
@@ -26,8 +27,9 @@ class _EventsListState extends State<EventsList> {
               print(snapshot.data);
               return ListView.builder(itemCount: snapshot.data.length, itemBuilder: (context, index) {
                 final event = DeviceEvent.fromJSON(snapshot.data[index]);
+                final time = DateFormat("HH:mm").format(DateTime.fromMillisecondsSinceEpoch(event.eventTime * 1000));
                 return ListTile(
-                  title: Text(event.eventTime.toString())
+                  title: Text(time.toString()),
                 );
               });
             } else {
