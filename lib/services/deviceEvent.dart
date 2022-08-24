@@ -16,11 +16,13 @@ class DeviceEvent extends ApiElement {
   });
 
   factory DeviceEvent.fromJSON(Map<String, dynamic> json) {
-    return DeviceEvent(
+    final DeviceEvent event = DeviceEvent(
       eventTime: json["eventTime"],
       targetYpos: json["targetYpos"],
       repeatable: json["repeatable"],
       repeat: json["repeat"]
     );
+    event.id = json["_id"];
+    return event;
   }
 }
