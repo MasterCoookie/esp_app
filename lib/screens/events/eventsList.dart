@@ -3,6 +3,7 @@ import 'package:esp_app/services/device.dart';
 import 'package:esp_app/services/deviceEvent.dart';
 import 'package:esp_app/constants.dart';
 import 'package:intl/intl.dart';
+import 'package:esp_app/screens/events/eventRepeatitions.dart';
 
 class EventsList extends StatefulWidget {
   @override
@@ -32,11 +33,12 @@ class _EventsListState extends State<EventsList> {
                   padding: const EdgeInsets.all(8.0),
                   child: ListTile(
                     tileColor: Color(colorPalette["primary"]),
-                    title: Text(time.toString(), style: TextStyle(
+                    leading: Text(time.toString(), style: TextStyle(
                       color: Colors.white,
                       fontWeight: FontWeight.bold,
                       fontSize: 20.0,  
                     )),
+                    title: EventRepeatitions(event: event),
                   ),
                 );
               });
