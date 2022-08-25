@@ -25,19 +25,19 @@ class _EventEditorState extends State<EventEditor> {
             title: Container(
               margin: const EdgeInsets.all(32.0),
               padding: const EdgeInsets.all(6.0),
-              child: Center(child: Text(eventTime.hour == null ? "12" : eventTime.hour.toString() + ":" + (eventTime.minute == null ? "00" : eventTime.minute.toString()),
+              child: Center(child: Text((eventTime != null ? eventTime.hour.toString() : "12") + ":" + (eventTime == null ? "00" : eventTime.minute.toString()),
                 style: TextStyle(color: Colors.white, fontSize: 40, letterSpacing: 2))),
               decoration: BoxDecoration(
               border: Border.all(color: Colors.white)
             ),),
             onTap: () async {
-              final time = await showTimePicker(
+              eventTime = await showTimePicker(
                 context: context,
-                initialTime: TimeOfDay(hour: eventTime.hour == null ? 12 : eventTime.hour, minute: eventTime.minute == null ? 0 : eventTime.minute),
+                initialTime: TimeOfDay(hour: eventTime == null ? 12 : eventTime.hour, minute: eventTime == null ? 0 : eventTime.minute),
                 initialEntryMode: TimePickerEntryMode.dial,
               );
               setState(() {
-                eventTime = time;
+                // eventTime = time;
               });
             },
           )
