@@ -23,7 +23,7 @@ class _EventsListState extends State<EventsList> {
       floatingActionButton: FloatingActionButton(
         child: const Icon(Icons.add),
         onPressed: () {
-          Navigator.pushNamed(context, '/eventEdiotor', arguments: args );
+          Navigator.pushNamed(context, '/eventEditor', arguments: args );
         }
       ),
       body: Container(
