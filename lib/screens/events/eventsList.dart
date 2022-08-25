@@ -44,7 +44,7 @@ class _EventsListState extends State<EventsList> {
                       fontWeight: FontWeight.bold,
                       fontSize: 20.0,  
                     )),
-                    title: EventRepeatitions(event: event),
+                    title: EventRepeatitions(event: event, preview: true),
                   ),
                 );
               });

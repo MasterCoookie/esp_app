@@ -4,8 +4,9 @@ import 'package:esp_app/constants.dart';
 
 class EventRepeatitions extends StatelessWidget {
   final DeviceEvent event;
+  final bool preview;
   final weekdays = ["SU", "MO", "TU", "WE", "TH", "FR", "ST"];
-  EventRepeatitions({ this.event });
+  EventRepeatitions({ this.event, this.preview });
 
   @override
   Widget build(BuildContext context) {
@@ -15,9 +16,9 @@ class EventRepeatitions extends StatelessWidget {
         child: ListView.builder(shrinkWrap: true, scrollDirection: Axis.horizontal, itemCount: event.repeat.length, itemBuilder: (context, index) {
           TextStyle style;
           if(event.repeat[index]) {
-            style = TextStyle(fontWeight: FontWeight.bold, color: Color(colorPalette["alt_strong"]), decoration: TextDecoration.underline);
+            style = TextStyle(fontWeight: FontWeight.bold, color: Colors.white, decoration: TextDecoration.underline);
           } else {
-            style = TextStyle(fontWeight: FontWeight.bold, color: Color(colorPalette["secondary"]));
+            style = TextStyle(fontWeight: FontWeight.bold, color: Color.fromARGB(113, 99, 87, 87));
           }
           
           return Padding(

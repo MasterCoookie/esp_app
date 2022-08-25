@@ -5,7 +5,7 @@ import 'package:esp_app/constants.dart';
 import 'package:esp_app/screens/events/eventRepeatitions.dart';
 
 class EventEditor extends StatefulWidget {
-
+  final event = DeviceEvent.fromRepeat(List.filled(7, false));
   @override
   State<EventEditor> createState() => _EventEditorState();
 }
@@ -40,7 +40,7 @@ class _EventEditorState extends State<EventEditor> {
               setState(() {});
             },
           ),
-          EventRepeatitions(event: DeviceEvent())
+          EventRepeatitions(event: this.widget.event, preview: false)
         ])
       )
     );
