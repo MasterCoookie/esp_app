@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:esp_app/services/device.dart';
 import 'package:esp_app/services/deviceEvent.dart';
 import 'package:esp_app/constants.dart';
+import 'package:esp_app/screens/events/eventRepeatitions.dart';
 
 class EventEditor extends StatefulWidget {
 
@@ -36,11 +37,10 @@ class _EventEditorState extends State<EventEditor> {
                 initialTime: TimeOfDay(hour: eventTime == null ? 12 : eventTime.hour, minute: eventTime == null ? 0 : eventTime.minute),
                 initialEntryMode: TimePickerEntryMode.dial,
               );
-              setState(() {
-                // eventTime = time;
-              });
+              setState(() {});
             },
-          )
+          ),
+          EventRepeatitions(event: DeviceEvent())
         ])
       )
     );

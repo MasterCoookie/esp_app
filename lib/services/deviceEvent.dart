@@ -15,6 +15,11 @@ class DeviceEvent extends ApiElement {
     this.repeat
   });
 
+  DeviceEvent.fromRepeat(List<bool> repeat) {
+    this.repeatable = true;
+    this.repeat = repeat;
+  }
+
   factory DeviceEvent.fromJSON(Map<String, dynamic> json) {
     final DeviceEvent event = DeviceEvent(
       eventTime: json["eventTime"],
