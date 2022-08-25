@@ -10,6 +10,7 @@ class EventEditor extends StatefulWidget {
 }
 
 class _EventEditorState extends State<EventEditor> {
+  TimeOfDay eventTime;
   @override
   Widget build(BuildContext context) {
     final args = ModalRoute.of(context).settings.arguments as Device;
@@ -20,15 +21,24 @@ class _EventEditorState extends State<EventEditor> {
       backgroundColor: Color(colorPalette["secondary"]),
       body: Container(
         child: Column(children: [
-          SizedBox(height: 24),
           ListTile(
-            title: Center(child: Text("12:00", style: TextStyle(color: Colors.white, fontSize: 38))),
+            title: Container(
+              margin: const EdgeInsets.all(32.0),
+              padding: const EdgeInsets.all(6.0),
+              child: Center(child: Text(eventTime.hour == null ? "12" : eventTime.hour.toString() + ":" + (eventTime.minute == null ? "00" : eventTime.minute.toString()),
+                style: TextStyle(color: Colors.white, fontSize: 40, letterSpacing: 2))),
+              decoration: BoxDecoration(
+              border: Border.all(color: Colors.white)
+            ),),
             onTap: () async {
-              final TimeOfDay newTime = await showTimePicker(
+              final time = await showTimePicker(
                 context: context,
-                initialTime: TimeOfDay(hour: 12, minute: 0),
+                initialTime: TimeOfDay(hour: eventTime.hour == null ? 12 : eventTime.hour, minute: eventTime.minute == null ? 0 : eventTime.minute),
                 initialEntryMode: TimePickerEntryMode.dial,
               );
+              setState(() {
+                eventTime = time;
+              });
             },
           )
         ])
