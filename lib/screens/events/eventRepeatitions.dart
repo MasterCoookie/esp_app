@@ -2,23 +2,30 @@ import 'package:flutter/material.dart';
 import 'package:esp_app/services/deviceEvent.dart';
 import 'package:esp_app/constants.dart';
 
-class EventRepeatitions extends StatelessWidget {
+class EventRepeatitions extends StatefulWidget {
   final DeviceEvent event;
   final bool preview;
-  final weekdays = ["SU", "MO", "TU", "WE", "TH", "FR", "ST"];
+
   EventRepeatitions({ this.event, this.preview });
+
+  @override
+  State<EventRepeatitions> createState() => _EventRepeatitionsState();
+}
+
+class _EventRepeatitionsState extends State<EventRepeatitions> {
+  final weekdays = ["SU", "MO", "TU", "WE", "TH", "FR", "ST"];
 
   @override
   Widget build(BuildContext context) {
     return Container(
       child: SizedBox(
-        height: 20,
-        child: ListView.builder(shrinkWrap: true, scrollDirection: Axis.horizontal, itemCount: event.repeat.length, itemBuilder: (context, index) {
+        height: this.widget.preview ? 20 : 42,
+        child: ListView.builder(shrinkWrap: true, scrollDirection: Axis.horizontal, itemCount: widget.event.repeat.length, itemBuilder: (context, index) {
           TextStyle style;
-          if(event.repeat[index]) {
-            style = TextStyle(fontWeight: FontWeight.bold, color: Colors.white, decoration: TextDecoration.underline);
+          if(widget.event.repeat[index]) {
+            style = TextStyle(fontWeight: FontWeight.bold, color: Colors.white, decoration: TextDecoration.underline, fontSize: this.widget.preview ? 18 : 28);
           } else {
-            style = TextStyle(fontWeight: FontWeight.bold, color: Color.fromARGB(113, 99, 87, 87));
+            style = TextStyle(fontWeight: FontWeight.bold, color: Color.fromARGB(113, 99, 87, 87), fontSize: this.widget.preview ? 18 : 28);
           }
           
           return Padding(
