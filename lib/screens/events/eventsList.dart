@@ -20,6 +20,12 @@ class _EventsListState extends State<EventsList> {
       appBar: AppBar(
         title: Text(args.deviceName)
       ),
+      floatingActionButton: FloatingActionButton(
+        child: const Icon(Icons.add),
+        onPressed: () {
+          
+        }
+      ),
       body: Container(
         child: FutureBuilder(
           future: args.getDeviceEvents(),
