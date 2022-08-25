@@ -4,6 +4,7 @@ import 'package:esp_app/screens/home/deviceWidget.dart';
 import 'package:esp_app/screens/home/deviceConfig.dart';
 import 'package:esp_app/services/HTTPOverrides.dart';
 import 'package:esp_app/screens/events/eventsList.dart';
+import 'package:esp_app/screens/events/eventEditor.dart';
 import 'dart:io';
 
 void main() {
@@ -21,7 +22,8 @@ class MyApp extends StatelessWidget {
       routes: {
         '/deviceWidget': (context) => DeviceWidget(),
         '/deviceConfig': (context) => DeviceConfig(),
-        '/eventsList': (context) => EventsList()
+        '/eventsList': (context) => EventsList(),
+        '/eventEditor': (context) => EventEditor()
         },
       title: 'Curtain',
       theme: ThemeData(
