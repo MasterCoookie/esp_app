@@ -16,9 +16,25 @@ class _EventEditorState extends State<EventEditor> {
     setState(() => this.widget.event.repeat = repeatitions );
   }
 
+  bool open;
+  Color buttonOpenColor;
+  Color buttonCloseColor;
+
   TimeOfDay eventTime;
   @override
   Widget build(BuildContext context) {
+    if(this.open != null) {
+      if(this.open) {
+        this.buttonOpenColor = Color(colorPalette["bcg"]);
+        this.buttonCloseColor = Color(colorPalette["bcg_secondary"]);
+      } else {
+        this.buttonOpenColor = Color(colorPalette["bcg_secondary"]);
+        this.buttonCloseColor = Color(colorPalette["bcg"]);
+      }      
+    } else {
+        this.buttonOpenColor = Color(colorPalette["bcg_secondary"]);
+        this.buttonCloseColor = Color(colorPalette["bcg_secondary"]);
+    }
     final args = ModalRoute.of(context).settings.arguments as Device;
     return Scaffold(
       appBar: AppBar(
@@ -52,16 +68,22 @@ class _EventEditorState extends State<EventEditor> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 ElevatedButton.icon(onPressed: () {
-
+                  setState(() => this.open = true);
                 },
+                  style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all(this.buttonOpenColor)
+                  ),
                   label: Text("Open"),
                   icon: Icon(Icons.keyboard_double_arrow_up),
                 ),
                 SizedBox(width:16),
                 ElevatedButton.icon(
                   onPressed: () {
-                    
+                    setState(() => this.open = false);
                   },
+                  style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all(this.buttonCloseColor)
+                  ),
                   label: Text("Close"),
                   icon: Icon(Icons.keyboard_double_arrow_down),
                 ),
