@@ -46,20 +46,27 @@ class _EventEditorState extends State<EventEditor> {
             },
           ),
           EventRepeatitions.withUpdateFunction(event: this.widget.event, preview: false, updateEventRepetitions: this.updateRepetitions),
-          Row(
-            children: [
-              IconButton(onPressed: () {
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                ElevatedButton.icon(onPressed: () {
 
-              },
-              icon: Icon(Icons.keyboard_double_arrow_up),
-              color: Colors.white),
-              IconButton(
-                onPressed: () {
-                  
                 },
-                icon: Icon(Icons.keyboard_double_arrow_down),
-                color: Colors.white),
-            ]
+                  label: Text("Open"),
+                  icon: Icon(Icons.keyboard_double_arrow_up),
+                ),
+                SizedBox(width:16),
+                ElevatedButton.icon(
+                  onPressed: () {
+                    
+                  },
+                  label: Text("Close"),
+                  icon: Icon(Icons.keyboard_double_arrow_down),
+                ),
+              ]
+            ),
           )
         ])
       )
