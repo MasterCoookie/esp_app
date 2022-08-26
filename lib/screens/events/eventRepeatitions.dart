@@ -5,9 +5,9 @@ import 'package:esp_app/constants.dart';
 class EventRepeatitions extends StatefulWidget {
   final DeviceEvent event;
   final bool preview;
-  Function updateEventRepetitions;
+  final Function updateEventRepetitions;
 
-  EventRepeatitions({ this.event, this.preview });
+  EventRepeatitions({ this.event, this.preview, this.updateEventRepetitions });
   EventRepeatitions.withUpdateFunction({ this.event, this.preview, this.updateEventRepetitions });
 
   @override
@@ -36,7 +36,8 @@ class _EventRepeatitionsState extends State<EventRepeatitions> {
               child: Text(weekdays[index], style: style),
             ),
             onTap: () {
-
+              this.widget.event.repeat[index] = !this.widget.event.repeat[index];
+              this.widget.updateEventRepetitions(this.widget.event.repeat);
             },
           );
         }),
