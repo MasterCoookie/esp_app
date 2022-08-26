@@ -46,6 +46,21 @@ class _EventEditorState extends State<EventEditor> {
             },
           ),
           EventRepeatitions.withUpdateFunction(event: this.widget.event, preview: false, updateEventRepetitions: this.updateRepetitions),
+          Row(
+            children: [
+              IconButton(onPressed: () {
+
+              },
+              icon: Icon(Icons.keyboard_double_arrow_up),
+              color: Colors.white),
+              IconButton(
+                onPressed: () {
+                  
+                },
+                icon: Icon(Icons.keyboard_double_arrow_down),
+                color: Colors.white),
+            ]
+          )
         ])
       )
     );
