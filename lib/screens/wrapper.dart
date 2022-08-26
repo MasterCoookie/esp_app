@@ -6,7 +6,7 @@ import 'package:esp_app/screens/auth/authenticate.dart';
 class Wrapper extends StatefulWidget {
 
   //potentially login from saved data
-  User user = new User();
+  final User user = new User();
 
   @override
   State<Wrapper> createState() => _WrapperState();
