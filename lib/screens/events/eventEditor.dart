@@ -20,10 +20,13 @@ class _EventEditorState extends State<EventEditor> {
   Color buttonOpenColor;
   Color buttonCloseColor;
 
+  bool acceptable;
+
   TimeOfDay eventTime;
   @override
   Widget build(BuildContext context) {
     if(this.open != null) {
+      this.acceptable = true;
       if(this.open) {
         this.buttonOpenColor = Color(colorPalette["bcg"]);
         this.buttonCloseColor = Color(colorPalette["bcg_secondary"]);
@@ -32,6 +35,7 @@ class _EventEditorState extends State<EventEditor> {
         this.buttonCloseColor = Color(colorPalette["bcg"]);
       }      
     } else {
+        this.acceptable = false;
         this.buttonOpenColor = Color(colorPalette["bcg_secondary"]);
         this.buttonCloseColor = Color(colorPalette["bcg_secondary"]);
     }
@@ -39,6 +43,14 @@ class _EventEditorState extends State<EventEditor> {
     return Scaffold(
       appBar: AppBar(
         title: Text(args.deviceName + " event")
+      ),
+      floatingActionButton: AnimatedSlide(
+        offset: acceptable ? Offset.zero : Offset(0, 2),
+        duration: Duration(milliseconds: 300),
+        child: FloatingActionButton(
+          child: Icon(Icons.check_circle),
+          onPressed: () {}
+        ),
       ),
       backgroundColor: Color(colorPalette["secondary"]),
       body: Container(
