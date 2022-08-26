@@ -43,8 +43,3 @@ final Center loading = Center(
     ),
   )
 );
-
-final IconButton remoteArrow = IconButton(
-  iconSize: 50,
-  color: Colors.white,
-);
