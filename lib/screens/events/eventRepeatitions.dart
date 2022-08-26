@@ -5,8 +5,10 @@ import 'package:esp_app/constants.dart';
 class EventRepeatitions extends StatefulWidget {
   final DeviceEvent event;
   final bool preview;
+  Function updateEventRepetitions;
 
   EventRepeatitions({ this.event, this.preview });
+  EventRepeatitions.withUpdateFunction({ this.event, this.preview, this.updateEventRepetitions });
 
   @override
   State<EventRepeatitions> createState() => _EventRepeatitionsState();
@@ -28,9 +30,14 @@ class _EventRepeatitionsState extends State<EventRepeatitions> {
             style = TextStyle(fontWeight: FontWeight.bold, color: Color.fromARGB(113, 99, 87, 87), fontSize: this.widget.preview ? 18 : 28);
           }
           
-          return Padding(
-            padding: const EdgeInsets.all(1.5),
-            child: Text(weekdays[index], style: style),
+          return InkWell(
+            child: Padding(
+              padding: const EdgeInsets.all(1.5),
+              child: Text(weekdays[index], style: style),
+            ),
+            onTap: () {
+
+            },
           );
         }),
       )
