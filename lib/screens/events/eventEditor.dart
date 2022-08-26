@@ -6,11 +6,16 @@ import 'package:esp_app/screens/events/eventRepeatitions.dart';
 
 class EventEditor extends StatefulWidget {
   final event = DeviceEvent.fromRepeat(List.filled(7, false));
+
   @override
   State<EventEditor> createState() => _EventEditorState();
 }
 
 class _EventEditorState extends State<EventEditor> {
+  void updateRepetitions(List<bool> repeatitions) {
+    setState(() => this.widget.event.repeat = repeatitions );
+  }
+
   TimeOfDay eventTime;
   @override
   Widget build(BuildContext context) {
@@ -40,7 +45,7 @@ class _EventEditorState extends State<EventEditor> {
               setState(() {});
             },
           ),
-          EventRepeatitions(event: this.widget.event, preview: false)
+          EventRepeatitions.withUpdateFunction(event: this.widget.event, preview: false, updateEventRepetitions: this.updateRepetitions),
         ])
       )
     );
