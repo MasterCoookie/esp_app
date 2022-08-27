@@ -32,7 +32,11 @@ class DeviceEvent extends ApiElement {
   }
 
   set eventTimeFromTimeOfDay(TimeOfDay time) {
-    var _time  = ((DateTime.now().millisecondsSinceEpoch) * 1000) + time.hour * 3600 + time.minute * 60;
-    print(DateTime.fromMillisecondsSinceEpoch((_time ~/ 1000)));
+    var currTime = DateTime.now();
+    int nextDay = 0;
+    if(time.hour < currTime.hour || (time.hour == currTime.hour && time.minute <= currTime.minute)) {
+      ++nextDay;
+    }
+    this.eventTime = (new DateTime(currTime.year, currTime.month, currTime.day + nextDay, time.hour, time.minute).millisecondsSinceEpoch) ~/ 1000;
   }
 }
