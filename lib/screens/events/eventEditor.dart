@@ -49,7 +49,9 @@ class _EventEditorState extends State<EventEditor> {
         duration: Duration(milliseconds: 300),
         child: FloatingActionButton(
           child: Icon(Icons.check_circle),
-          onPressed: () {}
+          onPressed: () {
+            this.widget.event.eventTimeFromTimeOfDay = eventTime;
+          }
         ),
       ),
       backgroundColor: Color(colorPalette["secondary"]),

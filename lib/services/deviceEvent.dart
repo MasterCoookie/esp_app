@@ -30,4 +30,9 @@ class DeviceEvent extends ApiElement {
     event.id = json["_id"];
     return event;
   }
+
+  set eventTimeFromTimeOfDay(TimeOfDay time) {
+    var _time  = ((DateTime.now().millisecondsSinceEpoch) * 1000) + time.hour * 3600 + time.minute * 60;
+    print(DateTime.fromMillisecondsSinceEpoch((_time ~/ 1000)));
+  }
 }
