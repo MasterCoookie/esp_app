@@ -53,16 +53,15 @@ class DeviceEvent extends ApiElement {
 
   Future<bool> saveAsNew(Device device) async {
     Map<String, dynamic> data = getAppendableAuth();
-
     data["deviceID"] = device.id;
-    data["eventTime"] = this.eventTime.toString();
-    data["targetYpos"] = this.targetYpos.toString();
-    data["repeatable"] = this.repeatable.toString();
-    data["repeat"] = this.repeat.toString();
 
     final url = ApiElement.api_address + "create_event";
     final uri = Uri.parse(url);
     String jsonData = json.encode(data);
+
+    jsonData = jsonData.substring(0, jsonData.length - 1) + this.asJSONAppend;
+    // print(jsonData);
+    // return true;
 
     try {
       Response response = await post(
@@ -85,15 +84,16 @@ class DeviceEvent extends ApiElement {
     }
   }
 
-  String get toJSON {
-    String json = "{";
-    json += "\"eventTime:\"" + this.eventTime.toString() + ",";
-    json += "\"targetYpos:\"" + this.targetYpos.toString() + ",";
-    json += "\"repeatable:\"" + this.repeatable.toString() + ",";
-    json += "\"repeat:\"[";
+  String get asJSONAppend {
+    String json = ",";
+    json += "\"eventTime\":" + this.eventTime.toString() + ",";
+    json += "\"targetYpos\":" + this.targetYpos.toString() + ",";
+    json += "\"repeatable\":" + this.repeatable.toString() + ",";
+    json += "\"repeat\":[";
     for (var i = 0; i < 6; ++i) {
       json += this.repeat[i].toString() + ",";
     }
-    json += this.repeat[7].toString() + "]}";
+    json += this.repeat[6].toString() + "]}";
+    return json;
   }
 }
