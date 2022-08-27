@@ -56,7 +56,6 @@ class _EventEditorState extends State<EventEditor> {
             } else {
               this.widget.event.targetYpos = args.yPosClosed;
             }
-            // print(this.widget.event.asJSONAppend);
             if(await this.widget.event.saveAsNew(args)) {
               Navigator.pop(context);
             } else {
