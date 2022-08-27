@@ -1,6 +1,8 @@
 import 'package:esp_app/services/api_element.dart';
+import 'package:esp_app/services/device.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
+import 'dart:convert';
 
 class DeviceEvent extends ApiElement {
   int eventTime;
@@ -47,5 +49,39 @@ class DeviceEvent extends ApiElement {
       "repeatable": this.repeatable,
       "repeat": this.repeat
     };
+  }
+
+  Future<bool> saveAsNew(Device device) async {
+    Map<String, dynamic> data = getAppendableAuth();
+
+    data["deviceID"] = device.id;
+    data["eventTime"] = this.eventTime;
+    data["targetYpos"] = this.targetYpos;
+    data["repeatable"] = this.repeatable;
+    data["repeat"] = this.repeat;
+
+    final url = ApiElement.api_address + "create_event";
+    final uri = Uri.parse(url);
+    String jsonData = json.encode(data);
+
+    try {
+      Response response = await post(
+        uri,
+        headers: ApiElement.headers,
+        body: jsonData,
+        encoding: ApiElement.encoding
+      );
+
+      int statusCode = response.statusCode;
+
+      if(statusCode == 201) {
+        return true;
+      }
+      print(statusCode);
+      return false;
+    } catch (e) {
+      print("Error: " + e.message);
+      return false;
+    }
   }
 }
