@@ -51,7 +51,12 @@ class _EventEditorState extends State<EventEditor> {
           child: Icon(Icons.check_circle),
           onPressed: () {
             this.widget.event.eventTimeFromTimeOfDay = eventTime;
-            print(this.widget.event.eventTime);
+            if(this.open) {
+              this.widget.event.targetYpos = 0;
+            } else {
+              this.widget.event.targetYpos = args.yPosClosed;
+            }
+            print(this.widget.event);
           }
         ),
       ),
