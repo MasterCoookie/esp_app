@@ -39,4 +39,13 @@ class DeviceEvent extends ApiElement {
     }
     this.eventTime = (new DateTime(currTime.year, currTime.month, currTime.day + nextDay, time.hour, time.minute).millisecondsSinceEpoch) ~/ 1000;
   }
+
+  Map<String, dynamic> get map {
+    return {
+      "eventTime": this.eventTime,
+      "targetYpos": this.targetYpos,
+      "repeatable": this.repeatable,
+      "repeat": this.repeat
+    };
+  }
 }

@@ -22,7 +22,7 @@ class _EventEditorState extends State<EventEditor> {
 
   bool acceptable;
 
-  TimeOfDay eventTime;
+  TimeOfDay eventTime = new TimeOfDay(hour: 12, minute: 0);
   @override
   Widget build(BuildContext context) {
     if(this.open != null) {
@@ -56,7 +56,7 @@ class _EventEditorState extends State<EventEditor> {
             } else {
               this.widget.event.targetYpos = args.yPosClosed;
             }
-            print(this.widget.event);
+            print(this.widget.event.map);
           }
         ),
       ),
