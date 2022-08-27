@@ -57,6 +57,7 @@ class _EventEditorState extends State<EventEditor> {
               this.widget.event.targetYpos = args.yPosClosed;
             }
             print(this.widget.event.map);
+            this.widget.event.saveAsNew(args);
           }
         ),
       ),

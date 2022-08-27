@@ -55,10 +55,10 @@ class DeviceEvent extends ApiElement {
     Map<String, dynamic> data = getAppendableAuth();
 
     data["deviceID"] = device.id;
-    data["eventTime"] = this.eventTime;
-    data["targetYpos"] = this.targetYpos;
-    data["repeatable"] = this.repeatable;
-    data["repeat"] = this.repeat;
+    data["eventTime"] = this.eventTime.toString();
+    data["targetYpos"] = this.targetYpos.toString();
+    data["repeatable"] = this.repeatable.toString();
+    data["repeat"] = this.repeat.toString();
 
     final url = ApiElement.api_address + "create_event";
     final uri = Uri.parse(url);
@@ -83,5 +83,17 @@ class DeviceEvent extends ApiElement {
       print("Error: " + e.message);
       return false;
     }
+  }
+
+  String get toJSON {
+    String json = "{";
+    json += "\"eventTime:\"" + this.eventTime.toString() + ",";
+    json += "\"targetYpos:\"" + this.targetYpos.toString() + ",";
+    json += "\"repeatable:\"" + this.repeatable.toString() + ",";
+    json += "\"repeat:\"[";
+    for (var i = 0; i < 6; ++i) {
+      json += this.repeat[i].toString() + ",";
+    }
+    json += this.repeat[7].toString() + "]}";
   }
 }
