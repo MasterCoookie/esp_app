@@ -49,7 +49,7 @@ class _EventEditorState extends State<EventEditor> {
         duration: Duration(milliseconds: 300),
         child: FloatingActionButton(
           child: Icon(Icons.check_circle),
-          onPressed: () {
+          onPressed: () async {
             this.widget.event.eventTimeFromTimeOfDay = eventTime;
             if(this.open) {
               this.widget.event.targetYpos = 0;
@@ -57,7 +57,11 @@ class _EventEditorState extends State<EventEditor> {
               this.widget.event.targetYpos = args.yPosClosed;
             }
             // print(this.widget.event.asJSONAppend);
-            this.widget.event.saveAsNew(args);
+            if(await this.widget.event.saveAsNew(args)) {
+              Navigator.pop(context);
+            } else {
+              await toastTemplate('Error creating event :(');
+            }
           }
         ),
       ),
