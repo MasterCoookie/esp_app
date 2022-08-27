@@ -60,9 +60,7 @@ class DeviceEvent extends ApiElement {
     String jsonData = json.encode(data);
 
     jsonData = jsonData.substring(0, jsonData.length - 1) + this.asJSONAppend;
-    // print(jsonData);
-    // return true;
-
+  
     try {
       Response response = await post(
         uri,
