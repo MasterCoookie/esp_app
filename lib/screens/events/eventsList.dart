@@ -45,6 +45,9 @@ class _EventsListState extends State<EventsList> {
                       fontSize: 20.0,  
                     )),
                     title: EventRepeatitions(event: event, preview: true),
+                    onTap: () {
+                      Navigator.pushNamed(context, '/eventEditor', arguments: args ).then((_) => setState(() {}));
+                    }
                   ),
                 );
               });
