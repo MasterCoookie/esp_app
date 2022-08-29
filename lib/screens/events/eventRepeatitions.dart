@@ -36,8 +36,10 @@ class _EventRepeatitionsState extends State<EventRepeatitions> {
               child: Text(weekdays[index], style: style),
             ),
             onTap: () {
-              this.widget.event.repeat[index] = !this.widget.event.repeat[index];
-              this.widget.updateEventRepetitions(this.widget.event.repeat);
+              if(!(this.widget.preview)) {
+                this.widget.event.repeat[index] = !this.widget.event.repeat[index];
+                this.widget.updateEventRepetitions(this.widget.event.repeat);
+              }              
             },
           );
         }),
