@@ -6,7 +6,6 @@ import 'package:esp_app/screens/events/eventRepeatitions.dart';
 import 'package:esp_app/services/args.dart';
 
 class EventEditor extends StatefulWidget {
-  final event = DeviceEvent.fromRepeat(List.filled(7, false));
 
   @override
   State<EventEditor> createState() => _EventEditorState();
@@ -14,7 +13,7 @@ class EventEditor extends StatefulWidget {
 
 class _EventEditorState extends State<EventEditor> {
   void updateRepetitions(List<bool> repeatitions) {
-    setState(() => this.widget.event.repeat = repeatitions );
+    setState(() => this.event.repeat = repeatitions );
   }
 
   bool open;
@@ -23,12 +22,14 @@ class _EventEditorState extends State<EventEditor> {
 
   bool acceptable;
 
+  DeviceEvent event = DeviceEvent.fromRepeat(List.filled(7, false));
+
   TimeOfDay eventTime = new TimeOfDay(hour: 12, minute: 0);
   @override
   Widget build(BuildContext context) {
     EventEditorArgs arguments = ModalRoute.of(context).settings.arguments;
     Device device = arguments.device;
-    DeviceEvent event = arguments.event;
+    this.event = arguments.event ?? event;
 
     if(this.open != null) {
       this.acceptable = true;
@@ -54,13 +55,13 @@ class _EventEditorState extends State<EventEditor> {
         child: FloatingActionButton(
           child: Icon(Icons.check_circle),
           onPressed: () async {
-            this.widget.event.eventTimeFromTimeOfDay = eventTime;
+            this.event.eventTimeFromTimeOfDay = eventTime;
             if(this.open) {
-              this.widget.event.targetYpos = 0;
+              this.event.targetYpos = 0;
             } else {
-              this.widget.event.targetYpos = device.yPosClosed;
+              this.event.targetYpos = device.yPosClosed;
             }
-            if(await this.widget.event.saveAsNew(device)) {
+            if(await this.event.saveAsNew(device)) {
               Navigator.pop(context);
             } else {
               await toastTemplate('Error creating event :(');
@@ -89,7 +90,7 @@ class _EventEditorState extends State<EventEditor> {
               setState(() {});
             },
           ),
-          EventRepeatitions.withUpdateFunction(event: this.widget.event, preview: false, updateEventRepetitions: this.updateRepetitions),
+          EventRepeatitions.withUpdateFunction(event: this.event, preview: false, updateEventRepetitions: this.updateRepetitions),
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Row(
