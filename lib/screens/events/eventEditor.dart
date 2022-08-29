@@ -81,11 +81,11 @@ class _EventEditorState extends State<EventEditor> {
               border: Border.all(color: Colors.white)
             ),),
             onTap: () async {
-              eventTime = await showTimePicker(
+              eventTime = await (showTimePicker(
                 context: context,
                 initialTime: TimeOfDay(hour: eventTime.hour, minute: eventTime.minute),
                 initialEntryMode: TimePickerEntryMode.dial,
-              );
+              )) ?? TimeOfDay(hour: 12, minute: 0);
               setState(() {});
             },
           ),
