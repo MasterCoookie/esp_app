@@ -17,7 +17,7 @@ class _EventEditorState extends State<EventEditor> {
   }
 
   bool open;
-  bool newTime = false;
+  bool init = true;
   Color buttonOpenColor;
   Color buttonCloseColor;
 
@@ -31,11 +31,14 @@ class _EventEditorState extends State<EventEditor> {
     EventEditorArgs arguments = ModalRoute.of(context).settings.arguments;
     Device device = arguments.device;
 
-    this.event = arguments.event ?? event;
-    this.eventTime = arguments.event != null && !this.newTime ? TimeOfDay(
-      hour: DateTime.fromMillisecondsSinceEpoch(arguments.event.eventTime * 1000).hour,
-      minute: DateTime.fromMillisecondsSinceEpoch(arguments.event.eventTime * 1000).minute) : this.eventTime;
-    this.open = arguments.event != null ? (arguments.event.targetYpos == 0) : this.open;
+    if(this.init) {
+      this.event = arguments.event ?? event;
+      this.eventTime = arguments.event != null ? TimeOfDay(
+        hour: DateTime.fromMillisecondsSinceEpoch(arguments.event.eventTime * 1000).hour,
+        minute: DateTime.fromMillisecondsSinceEpoch(arguments.event.eventTime * 1000).minute) : this.eventTime;
+      this.open = arguments.event != null ? (arguments.event.targetYpos == 0) : this.open;
+      this.init = false;
+    }
 
     if(this.open != null) {
       this.acceptable = true;
@@ -93,7 +96,7 @@ class _EventEditorState extends State<EventEditor> {
                 initialTime: TimeOfDay(hour: eventTime.hour, minute: eventTime.minute),
                 initialEntryMode: TimePickerEntryMode.dial,
               )) ?? eventTime;
-              setState(() => this.newTime = true );
+              setState(() {});
             },
           ),
           EventRepeatitions.withUpdateFunction(event: this.event, preview: false, updateEventRepetitions: this.updateRepetitions),
