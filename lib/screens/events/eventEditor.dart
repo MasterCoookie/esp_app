@@ -85,7 +85,7 @@ class _EventEditorState extends State<EventEditor> {
                 context: context,
                 initialTime: TimeOfDay(hour: eventTime.hour, minute: eventTime.minute),
                 initialEntryMode: TimePickerEntryMode.dial,
-              )) ?? TimeOfDay(hour: 12, minute: 0);
+              )) ?? eventTime;
               setState(() {});
             },
           ),
