@@ -3,6 +3,7 @@ import 'package:esp_app/services/device.dart';
 import 'package:esp_app/services/deviceEvent.dart';
 import 'package:esp_app/constants.dart';
 import 'package:esp_app/screens/events/eventRepeatitions.dart';
+import 'package:esp_app/services/args.dart';
 
 class EventEditor extends StatefulWidget {
   final event = DeviceEvent.fromRepeat(List.filled(7, false));
@@ -25,6 +26,10 @@ class _EventEditorState extends State<EventEditor> {
   TimeOfDay eventTime = new TimeOfDay(hour: 12, minute: 0);
   @override
   Widget build(BuildContext context) {
+    EventEditorArgs arguments = ModalRoute.of(context).settings.arguments;
+    Device device = arguments.device;
+    DeviceEvent event = arguments.event;
+
     if(this.open != null) {
       this.acceptable = true;
       if(this.open) {
@@ -39,10 +44,9 @@ class _EventEditorState extends State<EventEditor> {
         this.buttonOpenColor = Color(colorPalette["bcg_secondary"]);
         this.buttonCloseColor = Color(colorPalette["bcg_secondary"]);
     }
-    final args = ModalRoute.of(context).settings.arguments as Device;
     return Scaffold(
       appBar: AppBar(
-        title: Text(args.deviceName + " event")
+        title: Text(device.deviceName + " event")
       ),
       floatingActionButton: AnimatedSlide(
         offset: acceptable ? Offset.zero : Offset(0, 2),
@@ -54,9 +58,9 @@ class _EventEditorState extends State<EventEditor> {
             if(this.open) {
               this.widget.event.targetYpos = 0;
             } else {
-              this.widget.event.targetYpos = args.yPosClosed;
+              this.widget.event.targetYpos = device.yPosClosed;
             }
-            if(await this.widget.event.saveAsNew(args)) {
+            if(await this.widget.event.saveAsNew(device)) {
               Navigator.pop(context);
             } else {
               await toastTemplate('Error creating event :(');

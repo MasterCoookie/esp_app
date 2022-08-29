@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:esp_app/constants.dart';
 import 'package:esp_app/services/bt.dart';
 import 'package:esp_app/services/device.dart';
-import 'package:esp_app/services/configArgs.dart';
+import 'package:esp_app/services/args.dart';
 import 'package:esp_app/services/curtain.dart';
 
 class DeviceConfig extends StatefulWidget {

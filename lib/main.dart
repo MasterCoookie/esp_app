@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
         '/deviceWidget': (context) => DeviceWidget(),
         '/deviceConfig': (context) => DeviceConfig(),
         '/eventsList': (context) => EventsList(),
-        '/eventEditor': (context) => EventEditor()
+        '/eventEditor': (context) => EventEditor(),
         },
       title: 'Curtain',
       theme: ThemeData(

@@ -4,6 +4,7 @@ import 'package:esp_app/services/deviceEvent.dart';
 import 'package:esp_app/constants.dart';
 import 'package:intl/intl.dart';
 import 'package:esp_app/screens/events/eventRepeatitions.dart';
+import 'package:esp_app/services/args.dart';
 
 class EventsList extends StatefulWidget {
   @override
@@ -23,7 +24,7 @@ class _EventsListState extends State<EventsList> {
       floatingActionButton: FloatingActionButton(
         child: const Icon(Icons.add),
         onPressed: () {
-          Navigator.pushNamed(context, '/eventEditor', arguments: args ).then((_) => setState(() {}));
+          Navigator.pushNamed(context, '/eventEditor', arguments: EventEditorArgs(args, null) ).then((_) => setState(() {}));
         }
       ),
       body: Container(
@@ -46,7 +47,7 @@ class _EventsListState extends State<EventsList> {
                     )),
                     title: EventRepeatitions(event: event, preview: true),
                     onTap: () {
-                      Navigator.pushNamed(context, '/eventEditor', arguments: args ).then((_) => setState(() {}));
+                      Navigator.pushNamed(context, '/eventEditor', arguments: EventEditorArgs(args, event) ).then((_) => setState(() {}));
                     }
                   ),
                 );
