@@ -52,7 +52,8 @@ class _EventsListState extends State<EventsList> {
                     onLongPress: () async {
                       await event.delete();
                       setState(() {});
-                    }
+                    },
+                    trailing: Icon(event.targetYpos == 0 ? Icons.keyboard_double_arrow_up : Icons.keyboard_double_arrow_down, color: Colors.white),
                   ),
                 );
               });
