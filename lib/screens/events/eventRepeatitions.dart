@@ -35,12 +35,10 @@ class _EventRepeatitionsState extends State<EventRepeatitions> {
               padding: const EdgeInsets.all(1.5),
               child: Text(weekdays[index], style: style),
             ),
-            onTap: () {
-              if(!(this.widget.preview)) {
-                this.widget.event.repeat[index] = !this.widget.event.repeat[index];
-                this.widget.updateEventRepetitions(this.widget.event.repeat);
-              }              
-            },
+            onTap: this.widget.preview ? null : (() {
+              this.widget.event.repeat[index] = !this.widget.event.repeat[index];
+              this.widget.updateEventRepetitions(this.widget.event.repeat);         
+            }),
           );
         }),
       )
