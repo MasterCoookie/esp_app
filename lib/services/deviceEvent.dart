@@ -92,6 +92,36 @@ class DeviceEvent extends ApiElement {
     }
   }
 
+  Future<bool> delete() async {
+    Map<String, dynamic> data = getAppendableAuth();
+    data["eventID"] = super.id;
+
+    final url = ApiElement.api_address + "delete_event";
+    final uri = Uri.parse(url);
+    String jsonData = json.encode(data);
+
+    try {
+      Response response = await post(
+        uri,
+        headers: ApiElement.headers,
+        body: jsonData,
+        encoding: ApiElement.encoding
+      );
+
+      int statusCode = response.statusCode;
+
+      if(statusCode == 200) {
+        return true;
+      }
+      print(statusCode);
+      return false;
+
+    } catch (e) {
+      print("Error: " + e.message);
+      return false;
+    }
+  }
+
   String get asJSONAppend {
     String json = ",";
     json += "\"eventTime\":" + this.eventTime.toString() + ",";
