@@ -33,30 +33,34 @@ class _EventsListState extends State<EventsList> {
           builder: (context, snapshot) {
             if(snapshot.hasData) {
               print(snapshot.data);
-              return ListView.builder(itemCount: snapshot.data.length, itemBuilder: (context, index) {
-                final event = DeviceEvent.fromJSON(snapshot.data[index]);
-                final time = DateFormat("HH:mm").format(DateTime.fromMillisecondsSinceEpoch(event.eventTime * 1000));
-                return Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: ListTile(
-                    tileColor: Color(colorPalette["bcg"]),
-                    leading: Text(time.toString(), style: TextStyle(
-                      color: Color(colorPalette["primary"]),
-                      fontWeight: FontWeight.bold,
-                      fontSize: 20.0,  
-                    )),
-                    title: EventRepeatitions(event: event, preview: true),
-                    onTap: () {
-                      Navigator.pushNamed(context, '/eventEditor', arguments: EventEditorArgs(args, event) ).then((_) => setState(() {}));
-                    },
-                    onLongPress: () async {
-                      await event.delete();
-                      setState(() {});
-                    },
-                    trailing: Icon(event.targetYpos == 0 ? Icons.keyboard_double_arrow_up : Icons.keyboard_double_arrow_down, color: Colors.white),
-                  ),
-                );
-              });
+              if(snapshot.data.length > 0) {
+                return ListView.builder(itemCount: snapshot.data.length, itemBuilder: (context, index) {
+                  final event = DeviceEvent.fromJSON(snapshot.data[index]);
+                  final time = DateFormat("HH:mm").format(DateTime.fromMillisecondsSinceEpoch(event.eventTime * 1000));
+                  return Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: ListTile(
+                      tileColor: Color(colorPalette["bcg"]),
+                      leading: Text(time.toString(), style: TextStyle(
+                        color: Color(colorPalette["primary"]),
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20.0,  
+                      )),
+                      title: EventRepeatitions(event: event, preview: true),
+                      onTap: () {
+                        Navigator.pushNamed(context, '/eventEditor', arguments: EventEditorArgs(args, event) ).then((_) => setState(() {}));
+                      },
+                      onLongPress: () async {
+                        await event.delete();
+                        setState(() {});
+                      },
+                      trailing: Icon(event.targetYpos == 0 ? Icons.keyboard_double_arrow_up : Icons.keyboard_double_arrow_down, color: Colors.white),
+                    ),
+                  );
+                });
+              } else {
+                return Center(child: Text("No events yet, create new one!", style: TextStyle(color: Colors.white, fontSize: 24)));
+              }
             } else {
               return Text("loading");
             }
