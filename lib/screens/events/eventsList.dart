@@ -48,6 +48,10 @@ class _EventsListState extends State<EventsList> {
                     title: EventRepeatitions(event: event, preview: true),
                     onTap: () {
                       Navigator.pushNamed(context, '/eventEditor', arguments: EventEditorArgs(args, event) ).then((_) => setState(() {}));
+                    },
+                    onLongPress: () async {
+                      await event.delete();
+                      setState(() {});
                     }
                   ),
                 );
