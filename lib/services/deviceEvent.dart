@@ -51,11 +51,15 @@ class DeviceEvent extends ApiElement {
     };
   }
 
-  Future<bool> saveAsNew(Device device) async {
+  Future<bool> save(Device device, bool asNew) async {
     Map<String, dynamic> data = getAppendableAuth();
     data["deviceID"] = device.id;
 
-    final url = ApiElement.api_address + "create_event";
+    if(!asNew) {
+      data["eventID"] = super.id;
+    }
+
+    final url = ApiElement.api_address + (asNew ? "create_event" : "update_event");
     final uri = Uri.parse(url);
     String jsonData = json.encode(data);
 
@@ -71,8 +75,14 @@ class DeviceEvent extends ApiElement {
 
       int statusCode = response.statusCode;
 
-      if(statusCode == 201) {
-        return true;
+      if(asNew) {
+        if(statusCode == 201) {
+          return true;
+        }
+      } else {
+        if(statusCode == 200) {
+          return true;
+        }
       }
       print(statusCode);
       return false;

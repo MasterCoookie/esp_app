@@ -70,10 +70,10 @@ class _EventEditorState extends State<EventEditor> {
             } else {
               this.event.targetYpos = device.yPosClosed;
             }
-            if(await this.event.saveAsNew(device)) {
+            if(await this.event.save(device, (arguments.event == null))) {
               Navigator.pop(context);
             } else {
-              await toastTemplate('Error creating event :(');
+              await toastTemplate('Error :(');
             }
           }
         ),
