@@ -30,7 +30,7 @@ class _DeviceWidgetState extends State<DeviceWidget> {
         }
       ),
       appBar: AppBar(
-        title: Text(args.deviceName, style: TextStyle(color: Colors.white, fontSize: 26)),
+        title: Text(args.deviceName, style: TextStyle(color: Colors.white, fontSize: 21)),
         actions: [IconButton(color: Colors.white, icon: Icon(Icons.edit, color: Colors.white), onPressed: () {}),
             IconButton(color: Colors.white, icon: Icon(Icons.settings, color: Colors.white), onPressed: () {
               showModalBottomSheet(context: context, builder: (context) {

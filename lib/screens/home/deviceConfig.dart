@@ -24,9 +24,7 @@ class _DeviceConfigState extends State<DeviceConfig> {
     Device device = args.device;
 
     return Scaffold(
-      backgroundColor: Color(colorPalette["secondary"]),
       appBar: AppBar(
-        backgroundColor: Color(colorPalette["primary"]),
         title: Text("Configure your curtain", style: TextStyle(color: Colors.white)),
         actions: [IconButton(iconSize: 26, color: Colors.white, icon: Icon(Icons.check_circle, color: Colors.white), onPressed: () { Navigator.pop(context); })]
       ),
