@@ -33,9 +33,7 @@ class _RegisterState extends State<Register> {
         },
         child: const Icon(Icons.skip_next)
       ),
-      backgroundColor: Color(colorPalette["secondary"]),
       appBar: AppBar(
-        backgroundColor: Color(colorPalette["primary"]),
         title: Text("Register"),
         //elevation: 0,
         actions: <Widget>[

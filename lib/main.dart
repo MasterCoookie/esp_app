@@ -27,7 +27,19 @@ class MyApp extends StatelessWidget {
         },
       title: 'Curtain',
       theme: ThemeData(
-        primaryColor: Color(0xffFC9601),
+       colorScheme: ColorScheme(
+        primary: Colors.white,
+        brightness: Brightness.light,
+        secondary: Color(0xffD14009),
+        onError: Colors.white,
+        error: Colors.red,
+        onBackground: Color(0xffFFCC33),
+        background: Color(0xffFC9601),
+        surface: Color(0xffFFE484),
+        onSurface: Color(0xffFC9601),
+        onSecondary: Colors.white,
+        onPrimary: Colors.white,
+       )
       ),
       home: Wrapper(),
     );

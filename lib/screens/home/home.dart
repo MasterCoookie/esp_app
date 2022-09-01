@@ -16,9 +16,7 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(colorPalette["secondary"]),
       appBar: AppBar(
-        backgroundColor: Color(colorPalette["primary"]),
         title: Text("Select your device"),
       ),
       body: FutureBuilder(
