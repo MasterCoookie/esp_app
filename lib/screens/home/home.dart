@@ -28,7 +28,6 @@ class _HomeState extends State<Home> {
               ListView.builder(shrinkWrap: true, itemCount: snapshot.data.length, itemBuilder: ((context, index) {
                 dynamic device = snapshot.data[index];
                 return Card(
-                  color: Color(colorPalette["bcg"]),
                   margin: EdgeInsets.fromLTRB(8, 6, 8, 1),
                   child: ListTile(
                     title: Text(device["name"], style: TextStyle(color: Colors.white)),

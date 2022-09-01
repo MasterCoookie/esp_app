@@ -29,6 +29,10 @@ class MyApp extends StatelessWidget {
       
       theme: ThemeData(
       scaffoldBackgroundColor: Color(0xffFC9601),
+      listTileTheme: ListTileThemeData(
+        tileColor: Color(0xffD14009),
+      ),
+      cardColor: Color(0xffD14009),
        colorScheme: ColorScheme(
         primaryContainer: Color(0xffD14009),
         primary: Color(0xffD14009),
@@ -38,7 +42,7 @@ class MyApp extends StatelessWidget {
         error: Colors.red,
         onBackground: Color(0xffFFCC33),
         background: Color(0xffFC9601),
-        surface: Color(0xffFFE484),
+        surface: Color(0xffFFCC33),
         onSurface: Color(0xffFC9601),
         onSecondary: Colors.white,
         onPrimary: Colors.white,
