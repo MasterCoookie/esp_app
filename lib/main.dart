@@ -26,9 +26,12 @@ class MyApp extends StatelessWidget {
         '/eventEditor': (context) => EventEditor(),
         },
       title: 'Curtain',
+      
       theme: ThemeData(
+      scaffoldBackgroundColor: Color(0xffFC9601),
        colorScheme: ColorScheme(
-        primary: Colors.white,
+        primaryContainer: Color(0xffD14009),
+        primary: Color(0xffD14009),
         brightness: Brightness.light,
         secondary: Color(0xffD14009),
         onError: Colors.white,
@@ -39,6 +42,7 @@ class MyApp extends StatelessWidget {
         onSurface: Color(0xffFC9601),
         onSecondary: Colors.white,
         onPrimary: Colors.white,
+
        )
       ),
       home: Wrapper(),

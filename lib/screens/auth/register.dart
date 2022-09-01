@@ -77,7 +77,6 @@ class _RegisterState extends State<Register> {
             ), SizedBox(height:5),
             ElevatedButton(
               child: Text('Register', style: TextStyle(color: Colors.white)),
-              style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Color(colorPalette["alt_strong"]))),
               onPressed: () async {
                 if(_formKey.currentState.validate()) {
                   if(await widget.user.apiRegister(email, password)) {

@@ -17,7 +17,6 @@ class _EventsListState extends State<EventsList> {
   Widget build(BuildContext context) {
     final args = ModalRoute.of(context).settings.arguments as Device;
     return Scaffold(
-      backgroundColor: Color(colorPalette["secondary"]),
       appBar: AppBar(
         title: Text(args.deviceName)
       ),
@@ -40,9 +39,7 @@ class _EventsListState extends State<EventsList> {
                   return Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: ListTile(
-                      tileColor: Color(colorPalette["bcg"]),
                       leading: Text(time.toString(), style: TextStyle(
-                        color: Color(colorPalette["primary"]),
                         fontWeight: FontWeight.bold,
                         fontSize: 20.0,  
                       )),
