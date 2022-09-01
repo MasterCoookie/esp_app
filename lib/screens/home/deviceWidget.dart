@@ -29,13 +29,9 @@ class _DeviceWidgetState extends State<DeviceWidget> {
           Navigator.pushNamed(context, '/eventsList', arguments: args);
         }
       ),
-      backgroundColor: Color(colorPalette["secondary"]),
-      body: Column(
-        children: [Padding(
-          padding: const EdgeInsets.fromLTRB(20, 40, 0, 10),
-          child: Row(
-            children: [Text(args.deviceName, style: TextStyle(color: Colors.white, fontSize: 26)),
-            IconButton(color: Colors.white, icon: Icon(Icons.edit, color: Colors.white), onPressed: () {}),
+      appBar: AppBar(
+        title: Text(args.deviceName, style: TextStyle(color: Colors.white, fontSize: 26)),
+        actions: [IconButton(color: Colors.white, icon: Icon(Icons.edit, color: Colors.white), onPressed: () {}),
             IconButton(color: Colors.white, icon: Icon(Icons.settings, color: Colors.white), onPressed: () {
               showModalBottomSheet(context: context, builder: (context) {
                 return DeviceWidgetSettings(bt: bluetoothLE, device: args);
@@ -44,8 +40,9 @@ class _DeviceWidgetState extends State<DeviceWidget> {
             IconButton(color: Colors.white, icon: Icon(Icons.perm_data_setting, color: Colors.white), onPressed: () {
               Navigator.pushNamed(context, '/deviceConfig', arguments: ConfigArgs(args, bluetoothLE));
             })],
-          ),
-        ),
+      ),
+      body: Column(
+        children: [
         SizedBox(height: 20),
         FutureBuilder(
           future: bluetoothLE.scanAndConnect(),
