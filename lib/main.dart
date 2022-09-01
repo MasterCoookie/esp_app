@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
         },
       title: 'Curtain',
       theme: ThemeData(
-        primarySwatch: Colors.red,
+        primaryColor: Color(0xffFC9601),
       ),
       home: Wrapper(),
     );
