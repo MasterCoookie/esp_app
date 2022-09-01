@@ -78,10 +78,10 @@ class _EventEditorState extends State<EventEditor> {
           }
         ),
       ),
-      backgroundColor: Color(colorPalette["secondary"]),
       body: Container(
         child: Column(children: [
           ListTile(
+            tileColor: Color(0xffFC9601),
             title: Container(
               margin: const EdgeInsets.all(32.0),
               padding: const EdgeInsets.all(6.0),
