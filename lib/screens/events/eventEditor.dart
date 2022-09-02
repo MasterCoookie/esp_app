@@ -43,16 +43,16 @@ class _EventEditorState extends State<EventEditor> {
     if(this.open != null) {
       this.acceptable = true;
       if(this.open) {
-        this.buttonOpenColor = Color(colorPalette["bcg"]);
-        this.buttonCloseColor = Color(colorPalette["bcg_secondary"]);
+        this.buttonOpenColor = Color(0xffD14009);
+        this.buttonCloseColor = Color(0xffFC9601);
       } else {
-        this.buttonOpenColor = Color(colorPalette["bcg_secondary"]);
-        this.buttonCloseColor = Color(colorPalette["bcg"]);
+        this.buttonOpenColor = Color(0xffFC9601);
+        this.buttonCloseColor = Color(0xffD14009);
       }      
     } else {
         this.acceptable = false;
-        this.buttonOpenColor = Color(colorPalette["bcg_secondary"]);
-        this.buttonCloseColor = Color(colorPalette["bcg_secondary"]);
+        this.buttonOpenColor = Color(0xffFC9601);
+        this.buttonCloseColor = Color(0xffFC9601);
     }
     return Scaffold(
       appBar: AppBar(
@@ -100,7 +100,7 @@ class _EventEditorState extends State<EventEditor> {
                     data: Theme.of(context).copyWith(
                       colorScheme: ColorScheme.light(
                         primary: Color(0xffD14009),
-                        surface: Color(0xffFFE484),
+                        surface: Color(0xffFC9601),
                       )
                     ),
                     child: child,
