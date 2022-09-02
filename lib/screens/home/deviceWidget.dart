@@ -84,7 +84,6 @@ class _DeviceWidgetState extends State<DeviceWidget> {
               }
             }
           ),
-            
           ],
         ),
       ),

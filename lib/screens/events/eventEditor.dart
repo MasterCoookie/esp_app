@@ -95,6 +95,17 @@ class _EventEditorState extends State<EventEditor> {
                 context: context,
                 initialTime: TimeOfDay(hour: eventTime.hour, minute: eventTime.minute),
                 initialEntryMode: TimePickerEntryMode.dial,
+                builder: (context, child) {
+                  return Theme(
+                    data: Theme.of(context).copyWith(
+                      colorScheme: ColorScheme.light(
+                        primary: Color(0xffD14009),
+                        surface: Color(0xffFFE484),
+                      )
+                    ),
+                    child: child,
+                    );
+                }
               )) ?? eventTime;
               setState(() {});
             },
