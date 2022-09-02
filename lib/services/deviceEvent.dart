@@ -59,12 +59,13 @@ class DeviceEvent extends ApiElement {
       data["eventID"] = super.id;
     }
 
+    this.repeatable = this.repeat.contains(true);
+
     final url = ApiElement.api_address + (asNew ? "create_event" : "update_event");
     final uri = Uri.parse(url);
     String jsonData = json.encode(data);
 
     jsonData = jsonData.substring(0, jsonData.length - 1) + this.asJSONAppend;
-  
     try {
       Response response = await post(
         uri,
@@ -126,7 +127,7 @@ class DeviceEvent extends ApiElement {
     String json = ",";
     json += "\"eventTime\":" + this.eventTime.toString() + ",";
     json += "\"targetYpos\":" + this.targetYpos.toString() + ",";
-    json += "\"repeatable\":" + this.repeatable.toString() + ",";
+    json += "\"repeatable\":" + (this.repeatable ? "true" : "false") + ",";
     json += "\"repeat\":[";
     for (var i = 0; i < 6; ++i) {
       json += this.repeat[i].toString() + ",";
