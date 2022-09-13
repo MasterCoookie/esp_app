@@ -123,7 +123,7 @@ class _EventEditorState extends State<EventEditor> {
                   style: ButtonStyle(
                     backgroundColor: MaterialStateProperty.all(this.buttonOpenColor)
                   ),
-                  label: Text("Close"),
+                  label: Text("Open"),
                   icon: Icon(Icons.keyboard_double_arrow_up),
                 ),
                 SizedBox(width:16),
@@ -133,7 +133,7 @@ class _EventEditorState extends State<EventEditor> {
                   style: ButtonStyle(
                     backgroundColor: MaterialStateProperty.all(this.buttonCloseColor)
                   ),
-                  label: Text("Open"),
+                  label: Text("Close"),
                   icon: Icon(Icons.keyboard_double_arrow_down),
                 ),
               ]

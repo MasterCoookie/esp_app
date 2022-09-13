@@ -51,7 +51,7 @@ class _EventsListState extends State<EventsList> {
                         await event.delete();
                         setState(() {});
                       },
-                      trailing: Icon(event.targetYpos == 0 ? Icons.keyboard_double_arrow_up : Icons.keyboard_double_arrow_down, color: Colors.white),
+                      trailing: Icon(event.targetYpos == 0 ? Icons.keyboard_double_arrow_down : Icons.keyboard_double_arrow_up, color: Colors.white),
                     ),
                   );
                 });
