@@ -27,6 +27,8 @@ class BT {
     if(state.value == "connected") {
       QuickBlue.stopScan();
       QuickBlue.discoverServices(deviceId);
+    } else if(state.value == "disconnected") {
+      print("Disconnected");
     }
   }
 
@@ -57,6 +59,14 @@ class BT {
 
   void stopScan() {
     QuickBlue.stopScan();
+  }
+
+  void disconnect() {
+    QuickBlue.stopScan();
+    if(remoteServiceAvilable) {
+      QuickBlue.disconnect(this.MAC);
+      this.remoteServiceAvilable = false;
+    }
   }
 
   Future sendString(String str, CharacteristicType type) async {
